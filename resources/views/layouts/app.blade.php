@@ -1,36 +1,29 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="zxx" class="js">
     <head>
+        <base href="../">
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-
-        <title>{{ config('app.name', 'Laravel') }}</title>
-
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <meta name="author" content="Softnio">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="A powerful and conceptual apps base dashboard template that especially build for developers and programmers.">
+        <!-- Fav Icon  -->
+        <link rel="shortcut icon" href="./images/favicon.png">
+        <!-- Page Title  -->
+        <title>Default Dashboard | DashLite Admin Template</title>
+        <!-- StyleSheets  -->
+        <link rel="stylesheet" href="{{asset('assets/css/dashlite.css?ver=2.2.0')}}">
+        <link id="skin-default" rel="stylesheet" href="{{asset('assets/css/theme.css?ver=2.2.0')}}">
     </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
 
-            <!-- Page Heading -->
-            @if (isset($header))
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endif
-
-            <!-- Page Content -->
-            <main>
+    <body class="nk-body bg-white npc-default" :class="$class">
+        <div class="nk-app-root">
+            <div class="nk-main ">
                 {{ $slot }}
-            </main>
+            </div>
         </div>
+        
+        <script src="{{asset('assets/js/bundle.js?ver=2.2.0')}}"></script>
+        <script src="{{asset('assets/js/scripts.js?ver=2.2.0')}}"></script>
+        <script src="{{asset('assets/js/charts/chart-ecommerce.js?ver=2.2.0')}}"></script>
     </body>
 </html>
