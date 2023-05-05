@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Coupon\CouponController;
+use App\Http\Controllers\vendors\VendorController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,3 +31,7 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Route::get('/vendors', [VendorController::class, 'index'])->name('vendors');
+Route::get('/verify-coupon', [CouponController::class, 'verifyCoupon'])->name('verifyCoupon');
+Route::get('/contact-us', [CouponController::class, 'contact_us'])->name('contact-us');

@@ -10,15 +10,25 @@
                 </div>
             </div>
             
-            <form action="html/pages/auths/auth-success-v2.html">
+            <form method="POST" action="{{ route('register') }}">
+                @csrf
                 <div class="form-group">
-                    <label class="form-label" for="name">Name</label>
-                    <input type="text" class="form-control form-control-lg" id="name" placeholder="Enter your name">
+                    <label class="form-label" for="name">First Name</label>
+                    <input type="text" class="form-control form-control-lg" id="name" placeholder="Enter your name" required autofocus autocomplete="name" name="name">
+                    <x-input-error :messages="$errors->get('name')" class="mt-2" />
                 </div>
+
                 <div class="form-group">
-                    <label class="form-label" for="email">Email or Username</label>
-                    <input type="text" class="form-control form-control-lg" id="email" placeholder="Enter your email address or username">
+                    <label class="form-label" for="email">Last Name</label>
+                    <input type="text" class="form-control form-control-lg" id="email" placeholder="Enter your email address or username" required autofocus autocomplete="last_name" name="last_name">
+                    <x-input-error :messages="$errors->get('last_name')" class="mt-2" />
                 </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="email">Email</label>
+                    <input type="email" class="form-control form-control-lg" id="email" placeholder="Enter your email address or username" required autofocus autocomplete="email" name="email">
+                </div>
+
                 <div class="form-group">
                     <label class="form-label" for="password">Passcode</label>
                     <div class="form-control-wrap">
@@ -26,9 +36,22 @@
                             <em class="passcode-icon icon-show icon ni ni-eye"></em>
                             <em class="passcode-icon icon-hide icon ni ni-eye-off"></em>
                         </a>
-                        <input type="password" class="form-control form-control-lg" id="password" placeholder="Enter your passcode">
+                        <input type="password" class="form-control form-control-lg" id="password" placeholder="Enter your passcode" required autofocus autocomplete="password" name="password">
                     </div>
                 </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="password">Passcode</label>
+                    <div class="form-control-wrap">
+                        <a href="#" class="form-icon form-icon-right passcode-switch" data-target="password_confirmation">
+                            <em class="passcode-icon icon-show icon ni ni-eye"></em>
+                            <em class="passcode-icon icon-hide icon ni ni-eye-off"></em>
+                        </a>
+                        <input type="password" class="form-control form-control-lg" id="password" placeholder="Enter your passcode" required autofocus autocomplete="new-password" name="password_confirmation">
+                        <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+                    </div>
+                </div>
+
                 <div class="form-group">
                     <div class="custom-control custom-control-xs custom-checkbox">
                         <input type="checkbox" class="custom-control-input" id="checkbox">
@@ -36,7 +59,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <button class="btn btn-lg btn-primary btn-block">Register</button>
+                    <button type="submit" class="btn btn-lg btn-primary btn-block">Register</button>
                 </div>
             </form>
             <div class="form-note-s2 text-center pt-4"> Already have an account? <a href="html/pages/auths/auth-login-v2.html"><strong>Sign in instead</strong></a>
