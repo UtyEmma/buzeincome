@@ -14,6 +14,14 @@ use Illuminate\Support\Str;
 
 class VendorController extends Controller
 {
+
+    function index(){
+        $vendors = User::isAVendor()->isActive()->paginate();
+
+        return view('vendors.indexVendor', [
+            'vendors' => $vendors
+        ]);
+    }
     
     function list(){
         $query = User::query();

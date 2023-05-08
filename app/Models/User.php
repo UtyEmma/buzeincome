@@ -44,6 +44,10 @@ class User extends Authenticatable implements MustVerifyEmail
 
     // Scopes
 
+    public function scopeIsActive(Builder $query){
+        $query->where('status', Status::ACTIVE);
+    }
+
     public function scopeIsAUser(Builder $query){
         $query->where('role', Roles::USER);
     }
