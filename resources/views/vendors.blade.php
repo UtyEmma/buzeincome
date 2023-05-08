@@ -1,3 +1,5 @@
+@inject('status', 'App\Library\Status')
+
 <x-dashboard-layout>
     <div class="container-fluid">
         <div class="nk-content-inner">
@@ -25,15 +27,21 @@
                                                 <a href="#" class="dropdown-toggle dropdown-indicator btn btn-outline-light btn-white" data-toggle="dropdown">Status</a>
                                                 <div class="dropdown-menu dropdown-menu-right">
                                                     <ul class="link-list-opt no-bdr">
-                                                        <li><a href="#"><span>On Hold</span></a></li>
-                                                        <li><a href="#"><span>Delevired</span></a></li>
-                                                        <li><a href="#"><span>Rejected</span></a></li>
+                                                        <li><a href="{{route('vendors.list', [
+                                                            'status' => $status::ACTIVE    
+                                                        ])}}"><span>{{$status::ACTIVE}}</span></a></li>
+                                                        <li><a href="{{route('vendors.list', [
+                                                            'status' => $status::BANNED    
+                                                        ])}}"><span>{{$status::BANNED}}</span></a></li>
+                                                        <li><a href="{{route('vendors.list', [
+                                                            'status' => $status::SUSPENDED   
+                                                        ])}}" ><span>{{$status::SUSPENDED}}</span></a></li>
                                                     </ul>
                                                 </div>
                                             </div>
                                         </li>
 
-                                        <vendors.create-vendor-modal />
+                                        <x-vendors.create-vendor-modal />
                                     </ul>
                                 </div>
                             </div>

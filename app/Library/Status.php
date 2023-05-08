@@ -8,4 +8,7 @@ class Status {
     const SUSPENDED = 'SUSPENDED';
     const BANNED = 'BANNED';
 
+    const USED = 'USED';
+    const UNUSED = 'UNUSED';
+
 }

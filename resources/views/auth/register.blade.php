@@ -10,7 +10,7 @@
                 </div>
             </div>
             
-            <form action="{{route('login')}}" method="POST">
+            <form action="{{route('register')}}" method="POST">
                 @csrf
                 <div class="row form-group">
                     <div class="col-6">
@@ -40,6 +40,19 @@
                         <x-input-error key="password" />
                     </div>
                 </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="coupon">Coupon Code</label>
+                    <input type="text" class="form-control form-control-lg" id="coupon" name="coupon_code" placeholder="Enter your Coupon Code">
+                    <x-input-error key="coupon_code" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="referral_code">Referral Code (Optional) </label>
+                    <input type="text" class="form-control form-control-lg" id="referral_code" name="referral_code" placeholder="Enter your Referral Code">
+                    <x-input-error key="referral_code" />
+                </div>
+
                 <div class="form-group">
                     <div class="custom-control custom-control-xs custom-checkbox">
                         <input type="checkbox" class="custom-control-input" name="terms" id="checkbox">

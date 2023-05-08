@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Services;
+namespace App\Http\Services;
 
+use App\Library\Status;
 use App\Models\Coupon;
 use App\Models\User;
 use Illuminate\Support\Str;
@@ -18,17 +19,24 @@ class CouponService {
             return $this->generateRandomCoupon($len);
         }
 
-        return $str;
+        return strtoupper($str);
     }
 
     function createCoupons(User $vendor, $count){
         for ($i=0; $i < $count; $i++) { 
             Coupon::create([
                 'code' => $this->generateRandomCoupon(),
-                'vendor_id' => $vendor->id,
-                'status' => self::ACTIVE
+                'vendor_id' => $vendor->id
             ]);
         }
+    }
+
+    function checkForExistingCoupon($code) : bool{
+        return Coupon::where('code', $code)->exists();
+    }
+
+    function checkIfCouponIsUsed(Coupon $coupon) : bool {
+        return $coupon->status === Status::USED;
     }
 
 }
