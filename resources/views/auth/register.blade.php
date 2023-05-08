@@ -10,6 +10,7 @@
                 </div>
             </div>
             
+
             <form action="{{route('login')}}" method="POST">
                 @csrf
                 <div class="row form-group">
@@ -23,12 +24,20 @@
                         <input type="text" class="form-control form-control-lg" id="lastname" name="lastname" placeholder="Enter your Last Name">
                         <x-input-error key="lastname" />
                     </div>
+
                 </div>
+
                 <div class="form-group">
                     <label class="form-label" for="email">Email Address</label>
                     <input type="text" class="form-control form-control-lg" id="email" name="email" placeholder="Enter your email address">
                     <x-input-error key="email" />
                 </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="email">Email</label>
+                    <input type="email" class="form-control form-control-lg" id="email" placeholder="Enter your email address or username" required autofocus autocomplete="email" name="email">
+                </div>
+
                 <div class="form-group">
                     <label class="form-label" for="password">Password</label>
                     <div class="form-control-wrap">
@@ -40,6 +49,7 @@
                         <x-input-error key="password" />
                     </div>
                 </div>
+
                 <div class="form-group">
                     <div class="custom-control custom-control-xs custom-checkbox">
                         <input type="checkbox" class="custom-control-input" name="terms" id="checkbox">
@@ -48,7 +58,7 @@
                     <x-input-error key="terms" />
                 </div>
                 <div class="form-group">
-                    <button class="btn btn-lg btn-primary btn-block">Register</button>
+                    <button type="submit" class="btn btn-lg btn-primary btn-block">Register</button>
                 </div>
             </form>
             <div class="form-note-s2 text-center pt-4"> Already have an account? <a href="{{route('login')}}"><strong>Sign in instead</strong></a>

@@ -43,3 +43,7 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Route::get('/vendors', [VendorController::class, 'index'])->name('vendors');
+Route::get('/verify-coupon', [CouponController::class, 'verifyCoupon'])->name('verifyCoupon');
+Route::get('/contact-us', [CouponController::class, 'contact_us'])->name('contact-us');
