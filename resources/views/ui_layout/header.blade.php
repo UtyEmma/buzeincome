@@ -11,37 +11,37 @@
     <title>{{config('global.sitename')}}</title>
 
     <!--== Favicon ==-->
-    <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href=" {{ asset('assets/img/favicon.ico') }}" type="image/x-icon" />
 
     <!--== Google Fonts ==-->
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,600,700,800" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,700" rel="stylesheet">
 
     <!--== Bootstrap Min CSS ==-->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet"/>
     <!--== Font Awesome Min CSS ==-->
-    <link href="assets/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="{{ asset('assets/css/font-awesome.min.css') }}" rel="stylesheet"/>
     <!--== ElegantIcons CSS ==-->
-    <link href="assets/css/elegantIcons.css" rel="stylesheet"/>
+    <link href="{{ asset('assets/css/elegantIcons.css') }}" rel="stylesheet"/>
     <!--== Linearicons CSS ==-->
-    <link href="assets/css/linearicons.css" rel="stylesheet"/>
+    <link href="{{ asset('assets/css/linearicons.css') }}" rel="stylesheet"/>
     <!--== Animate CSS ==-->
-    <link href="assets/css/animate.min.css" rel="stylesheet"/>
+    <link href="{{ asset('assets/css/animate.min.css') }}" rel="stylesheet"/>
     <!--== Countdown CSS ==-->
-    <link href="assets/css/jquery.countdown.css" rel="stylesheet"/>
+    <link href="{{ asset('assets/css/jquery.countdown.css') }}" rel="stylesheet"/>
     <!--== Leaflet CSS ==-->
-    <link href="assets/css/leaflet.css" rel="stylesheet"/>
+    <link href="{{ asset('assets/css/leaflet.css') }}" rel="stylesheet"/>
     <!--== Owl Carousel CSS ==-->
-    <link href="assets/css/owl-carousel.css" rel="stylesheet"/>
+    <link href="{{ asset('assets/css/owl-carousel.css') }}" rel="stylesheet"/>
     <!--== Owl Theme CSS ==-->
-    <link href="assets/css/owl-theme.css" rel="stylesheet"/>
+    <link href="{{ asset('assets/css/owl-theme.css') }}" rel="stylesheet"/>
     <!--== Slick Slider CSS ==-->
-    <link href="assets/css/slick-slider.css" rel="stylesheet"/>
+    <link href="{{ asset('assets/css/slick-slider.css') }}" rel="stylesheet"/>
     <!--== Fancybox CSS ==-->
-    <link href="assets/css/fancybox.css" rel="stylesheet"/>
+    <link href="{{ asset('assets/css/fancybox.css') }}" rel="stylesheet"/>
 
     <!--== Main Style CSS ==-->
-    <link href="assets/css/style.css" rel="stylesheet" />
+    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet" />
 
 </head>
 
@@ -71,8 +71,8 @@
           <div class="header-right">
             <div class="header-logo-area">
               <a href="index.html">
-                <img class="logo-main" src="assets/img/logo.png" alt="Logo" />
-                <img class="logo-light" src="assets/img/logo.png" alt="Logo" />
+                <img class="logo-main" src="{{ asset('assets/img/logo.png') }}" alt="Logo" />
+                <img class="logo-light" src="{{ asset('assets/img/logo.png') }}" alt="Logo" />
               </a>
             </div>
             <div class="header-navigation-area">
