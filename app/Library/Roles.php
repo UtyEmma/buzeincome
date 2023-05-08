@@ -10,6 +10,7 @@ class Roles {
     const ADMIN = 'admin';
     const USER = 'user';
     const VENDOR = 'vendor';
+    const ANYADMIN = 'any-admin';
 
     public function isUser(User $user){
         return ($user ?? auth()->user())->role === Roles::USER;

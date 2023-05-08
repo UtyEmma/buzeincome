@@ -16,18 +16,8 @@ class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable, HasUuids;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
-    protected $fillable = [ 'firstname', 'lastname', 'email', 'password', 'phone', 'socials', 'referral_id', 'role', 'status'];
+    protected $fillable = [ 'firstname', 'lastname', 'email', 'password', 'phone', 'socials', 'referral_id', 'role', 'status', 'image'];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
     protected $hidden = [
         'password',
         'remember_token',
@@ -37,36 +27,69 @@ class User extends Authenticatable implements MustVerifyEmail
         'status' => Status::ACTIVE
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
     protected $casts = [
         'email_verified_at' => 'datetime',
         'socials' => 'array',
     ];
 
+    protected static function booted(): void
+    {
+        static::created(function (User $user) {
+            $user->wallet()->create([
+                'user_id' => $user->id,
+                'main_bal' => env('DEFAULT_BALANCE')
+            ]);
+        });
+    }
+
+    // Scopes
+
+    public function scopeIsActive(Builder $query){
+        $query->where('status', Status::ACTIVE);
+    }
+
     public function scopeIsAUser(Builder $query){
-        return $query->where('role', Roles::USER);
+        $query->where('role', Roles::USER);
     }
     
     public function scopeIsAnAdmin(Builder $query){
-        return $query->where('role', Roles::ADMIN);
+        $query->where('role', Roles::ADMIN);
     }
 
     public function scopeIsAllAdmins(Builder $query){
-        return $query->where('role', Roles::ADMIN)->orWhere('role', Roles::SUPERADMIN);
+        $query->where('role', Roles::ADMIN)->orWhere('role', Roles::SUPERADMIN);
     }
 
     public function scopeIsASuperAdmin(Builder $query){
-        return $query->where('role', Roles::SUPERADMIN);
+        $query->where('role', Roles::SUPERADMIN);
     }
 
     public function scopeIsAVendor(Builder $query){
-        return $query->where('role', Roles::VENDOR);
+        $query->where('role', Roles::VENDOR);
     }
 
+    // Relationships
+    function coupon(){
+        return $this->hasOne(Coupon::class, 'user_id');
+    }
+
+    function wallet(){
+        return $this->hasOne(Wallet::class, 'user_id');
+    }
+
+    function coupons(){
+        return $this->hasMany(Coupon::class, 'vendor_id');
+    }
+
+    function users(){
+        return $this->hasManyThrough(Coupon::class, User::class, 'coupon_id', 'vendor_id', 'id', 'id' );
+    }
+
+    function vendor(){
+        return $this->hasOneThrough(User::class, Coupon::class, 'vendor_id', 'coupon_id', 'id', 'id' );
+    }
+
+    // Utilities
     public function isUser(User $user =  null){
         return ($user ?? auth()->user())->role === Roles::USER;
     }

@@ -26,7 +26,7 @@ class UserController extends Controller {
         ]);
     }
 
-    function update(Request $request){
+    function update(Request $request){  
 
     }
 

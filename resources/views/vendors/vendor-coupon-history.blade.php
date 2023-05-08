@@ -1,5 +1,4 @@
 @inject('status', 'App\Library\Status')
-
 <x-dashboard-layout>
     <div class="container-fluid">
         <div class="nk-content-inner">
@@ -7,47 +6,29 @@
                 <div class="nk-block-head nk-block-head-sm">
                     <div class="nk-block-between">
                         <div class="nk-block-head-content">
-                            <h3 class="nk-block-title page-title">Vendors</h3>
-                        </div><!-- .nk-block-head-content -->
+                            <h3 class="nk-block-title page-title">Coupon History</h3>
+                        </div>
                         <div class="nk-block-head-content">
                             <div class="toggle-wrap nk-block-tools-toggle">
                                 <a href="#" class="btn btn-icon btn-trigger toggle-expand mr-n1" data-target="pageMenu"><em class="icon ni ni-more-v"></em></a>
                                 <div class="toggle-expand-content" data-content="pageMenu">
                                     <ul class="nk-block-tools g-3">
                                         <li>
-                                            <div class="form-control-wrap">
-                                                <div class="form-icon form-icon-right">
-                                                    <em class="icon ni ni-search"></em>
+                                            <form action="{{route('coupons.vendor-coupon-history')}}" method="get">
+                                                <div class="form-control-wrap">
+                                                    <div class="form-icon form-icon-right">
+                                                        <em class="icon ni ni-search"></em>
+                                                    </div>
+                                                    <input type="text" name="search" class="form-control" placeholder="Search by coupon code or User's Name">
                                                 </div>
-                                                <input type="text" class="form-control" id="default-04" placeholder="Quick search by id">
-                                            </div>
+                                            </form>
                                         </li>
-                                        <li>
-                                            <div class="drodown">
-                                                <a href="#" class="dropdown-toggle dropdown-indicator btn btn-outline-light btn-white" data-toggle="dropdown">Status</a>
-                                                <div class="dropdown-menu dropdown-menu-right">
-                                                    <ul class="link-list-opt no-bdr">
-                                                        <li><a href="{{route('vendors.list', [
-                                                            'status' => $status::ACTIVE    
-                                                        ])}}"><span>{{$status::ACTIVE}}</span></a></li>
-                                                        <li><a href="{{route('vendors.list', [
-                                                            'status' => $status::BANNED    
-                                                        ])}}"><span>{{$status::BANNED}}</span></a></li>
-                                                        <li><a href="{{route('vendors.list', [
-                                                            'status' => $status::SUSPENDED   
-                                                        ])}}" ><span>{{$status::SUSPENDED}}</span></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </li>
-
-                                        <x-vendors.create-vendor-modal />
                                     </ul>
                                 </div>
                             </div>
                         </div><!-- .nk-block-head-content -->
                     </div><!-- .nk-block-between -->
-                </div><!-- .nk-block-head -->
+                </div>
                 <div class="nk-block">
                     <div class="nk-tb-list is-separate is-medium mb-3">
                         <div class="nk-tb-item nk-tb-head">
@@ -57,11 +38,10 @@
                                     <label class="custom-control-label" for="uid"></label>
                                 </div>
                             </div>
-                            <div class="nk-tb-col tb-col-lg"><span>Vendor</span></div>
-                            <div class="nk-tb-col tb-col-md"><span>Active Coupons</span></div>
-                            <div class="nk-tb-col tb-col-md"><span>Total Coupons</span></div>
-                            <div class="nk-tb-col tb-col-md"><span>Sales</span></div>
-                            <div class="nk-tb-col"><span class="d-none d-mb-block">Status</span></div>
+                            <div class="nk-tb-col tb-col-md"><span>Coupon Code</span></div>
+                            <div class="nk-tb-col tb-col-md"><span>Date Created</span></div>
+                            <div class="nk-tb-col tb-col-md"><span>Date Used</span></div>
+                            <div class="nk-tb-col tb-col-lg"><span>User</span></div>
                             <div class="nk-tb-col nk-tb-col-tools">
                                 <ul class="nk-tb-actions gx-1 my-n1">
                                     <li>
@@ -79,8 +59,8 @@
                             </div>
                         </div>
 
-                        @forelse ($vendors as $vendor)
-                            <x-vendors.vendor-item :vendor="$vendor" />
+                        @forelse ($coupons as $coupon)
+                            <x-users.vendor-coupon-history-item :coupon="$coupon" />
                         @empty
                             <div class="nk-tb-item ">
                                 <div>
@@ -95,15 +75,7 @@
                         <div class="card-inner">
                             <div class="nk-block-between-md g-3">
                                 <div class="g">
-                                    <ul class="pagination justify-content-center justify-content-md-start">
-                                        <li class="page-item"><a class="page-link" href="#"><em class="icon ni ni-chevrons-left"></em></a></li>
-                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                        <li class="page-item"><span class="page-link"><em class="icon ni ni-more-h"></em></span></li>
-                                        <li class="page-item"><a class="page-link" href="#">6</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">7</a></li>
-                                        <li class="page-item"><a class="page-link" href="#"><em class="icon ni ni-chevrons-right"></em></a></li>
-                                    </ul><!-- .pagination -->
+                                    {{$coupons->links()}}
                                 </div>
                                 <div class="g">
                                     <div class="pagination-goto d-flex justify-content-center justify-content-md-start gx-3">

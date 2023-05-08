@@ -5,7 +5,7 @@
             <div class="nk-block-des fs-16px">
                 <p>We have sent an email to <span class="text-primary">{{auth()->user()->email}}</span> to complete your account setup!</p>
 
-                <a href="{{route('dashboard')}}" class="btn btn-primary">Proceed to my Account!</a> 
+                <a href="{{route('verification.send')}}" class="btn btn-primary">Resend Verification Link</a> 
                 <br/>
                 <a href="{{route('logout')}}" class="mt-4 btn ">Logout</a>
             </div>
