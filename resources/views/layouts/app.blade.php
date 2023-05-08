@@ -15,13 +15,15 @@
         <link id="skin-default" rel="stylesheet" href="{{asset('assets/css/theme.css?ver=2.2.0')}}">
     </head>
 
-    <body class="nk-body bg-white npc-default" :class="$class">
+    <body class="nk-body npc-default" :class="$class">
         <div class="nk-app-root">
             <div class="nk-main ">
                 {{ $slot }}
             </div>
         </div>
         
+        @include('sweetalert::alert')
+
         <script src="{{asset('assets/js/bundle.js?ver=2.2.0')}}"></script>
         <script src="{{asset('assets/js/scripts.js?ver=2.2.0')}}"></script>
         <script src="{{asset('assets/js/charts/chart-ecommerce.js?ver=2.2.0')}}"></script>
