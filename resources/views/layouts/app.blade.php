@@ -6,24 +6,34 @@
         <meta name="author" content="Softnio">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="A powerful and conceptual apps base dashboard template that especially build for developers and programmers.">
-        <!-- Fav Icon  -->
+        
         <link rel="shortcut icon" href="./images/favicon.png">
-        <!-- Page Title  -->
-        <title>Default Dashboard | DashLite Admin Template</title>
-        <!-- StyleSheets  -->
+        
+        <title>DashLite Admin Template</title>
+
         <link rel="stylesheet" href="{{asset('assets/css/dashlite.css?ver=2.2.0')}}">
         <link id="skin-default" rel="stylesheet" href="{{asset('assets/css/theme.css?ver=2.2.0')}}">
+
+        <script  src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+        @stack('styles')
     </head>
 
-    <body class="nk-body bg-white npc-default" :class="$class">
+    <body class="nk-body npc-default" :class="$class">
         <div class="nk-app-root">
             <div class="nk-main ">
                 {{ $slot }}
             </div>
         </div>
+
+        @stack('modals')
         
+        @include('sweetalert::alert')
+
         <script src="{{asset('assets/js/bundle.js?ver=2.2.0')}}"></script>
         <script src="{{asset('assets/js/scripts.js?ver=2.2.0')}}"></script>
         <script src="{{asset('assets/js/charts/chart-ecommerce.js?ver=2.2.0')}}"></script>
+
+        @stack('scripts')
     </body>
 </html>

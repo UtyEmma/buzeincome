@@ -82,9 +82,9 @@
                     <li><a href="/">How It Works</a></li>
                   </ul>
                 </li>
-                <li><a href="/vendors">Coupon Vendors</a>
+                <li><a href="{{route('vendors')}}">Coupon Vendors</a>
                 </li>
-                <li><a href="/verify-coupon">Verify Coupon</a></li>
+                <li><a href="{{route('verifyCoupon')}}">Verify Coupon</a></li>
                 <li><a href="contact-us">Contact</a></li>
 
                 @if (Auth()->check())
