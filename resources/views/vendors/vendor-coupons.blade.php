@@ -1,6 +1,6 @@
 <x-dashboard-layout>
     <div class="mb-4 d-flex justify-content-between">
-        <h4>Active Coupons</h4>
+        <h3 class="nk-block-title page-title">Active Coupons</h3>
 
         <button class="btn btn-primary">Coupon History</button>
     </div>

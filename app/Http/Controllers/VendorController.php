@@ -66,7 +66,7 @@ class VendorController extends Controller
         $coupons = $request->user()
                             ->coupons()
                             ->where('status', Status::UNUSED)
-                            // ->with(['vendor'])
+                            ->with(['vendor'])
                             ->get();
 
         // dd($coupons);
@@ -76,17 +76,20 @@ class VendorController extends Controller
         ]);
     }
                         
-    function users(Request $request){
-        $users = $request->user()
-                        ->users()
-                        ->when($request->status, function($query, $status){
-                            $query->where('status', $status);
+    function couponHistory(Request $request){
+        $coupons = $request->user()
+                        ->coupons()
+                        ->when($request->search, function($query, $keyword) {
+                            $query->where('code', 'LIKE', "%$keyword%")
+                                    ->orWhereRelation('user', 'firstname', 'LIKE', "%$keyword%")
+                                    ->orWhereRelation('user', 'lastname', 'LIKE', "%$keyword%");
                         })
-                        ->with(['coupons'])
-                        ->get();
+                        ->where('status', Status::USED)
+                        ->with(['user'])
+                        ->paginate();
 
-        return view('vendors.vendor-users', [
-            'users' => $users
+        return view('vendors.vendor-coupon-history', [
+            'coupons' => $coupons
         ]);
     }
 

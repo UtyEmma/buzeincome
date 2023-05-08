@@ -35,7 +35,7 @@ Route::middleware('auth')->group(function () {
 
         Route::middleware('role:'.Roles::VENDOR)->group(function(){
             Route::get('/my-coupons', [VendorController::class, 'coupons'])->name('coupons.vendor-coupons');
-            Route::get('/my-users', [VendorController::class, 'users'])->name('coupons.vendor-users');
+            Route::get('/coupon-history', [VendorController::class, 'couponHistory'])->name('coupons.vendor-coupon-history');
         });
 
         Route::middleware('role:'.Roles::ANYADMIN)->group(function() {

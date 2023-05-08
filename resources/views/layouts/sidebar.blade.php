@@ -86,9 +86,9 @@
                                 <span class="nk-menu-icon"><em class="icon ni ni-money"></em></span>
                                 <span class="nk-menu-text">Coupons</span>
                             </a>
-                            <a href="{{route('coupons.vendor-users')}}" class="nk-menu-link" data-original-title="" title="">
-                                <span class="nk-menu-icon"><em class="icon ni ni-user"></em></span>
-                                <span class="nk-menu-text">Users</span>
+                            <a href="{{route('coupons.vendor-coupon-history')}}" class="nk-menu-link" data-original-title="" title="">
+                                <span class="nk-menu-icon"><em class="icon ni ni-histroy"></em></span>
+                                <span class="nk-menu-text">Coupon History</span>
                             </a>
                             <a href="html/index-sales.html" class="nk-menu-link" data-original-title="" title="">
                                 <span class="nk-menu-icon"><em class="icon ni ni-sign-dollar"></em></span>

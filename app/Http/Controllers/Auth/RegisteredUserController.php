@@ -44,11 +44,12 @@ class RegisteredUserController extends Controller {
         $user = User::create(collect($validated)->except(['terms', 'coupon_code'])->merge([
             'password' => Hash::make($request->password),
             'role' => Roles::USER,
-            'coupon_id' => $coupon 
+            'coupon_id' => $coupon->id
         ])->toArray());
 
         $coupon->status = Status::USED;
         $coupon->user_id = $user->id;
+        $coupon->used_at = $user->created_at;
         $coupon->save();
 
         event(new Registered($user));

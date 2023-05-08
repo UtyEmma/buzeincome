@@ -18,11 +18,11 @@ class Coupon extends Model
     ];
 
     function vendor(){
-        $this->belongsTo(User::class, 'vendor_id');
+        return $this->belongsTo(User::class, 'vendor_id');
     }
 
     function user(){
-        $this->hasOne(User::class, 'user_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
 
