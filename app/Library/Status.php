@@ -11,4 +11,6 @@ class Status {
     const USED = 'USED';
     const UNUSED = 'UNUSED';
 
+    const EXPIRED = 'EXPIRED';
+
 }

@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Services\CouponService;
+use App\Http\Services\ReferralService;
 use App\Library\Roles;
 use App\Library\Status;
+use App\Library\Token;
 use App\Models\Coupon;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
@@ -24,7 +26,7 @@ class RegisteredUserController extends Controller {
         return view('auth.register');
     }
 
-    public function store(Request $request, CouponService $couponService): RedirectResponse {
+    public function store(Request $request, CouponService $couponService, ReferralService $referralService): RedirectResponse {
         $validated = $request->validate([
             'firstname' => ['required', 'string', 'max:255'],
             'lastname' => ['required', 'string', 'max:255'],
@@ -44,13 +46,16 @@ class RegisteredUserController extends Controller {
         $user = User::create(collect($validated)->except(['terms', 'coupon_code'])->merge([
             'password' => Hash::make($request->password),
             'role' => Roles::USER,
-            'coupon_id' => $coupon->id
+            'coupon_id' => $coupon->id,
+            'referral_id' => Token::text(8, 'users', 'referral_id')
         ])->toArray());
 
         $coupon->status = Status::USED;
         $coupon->user_id = $user->id;
         $coupon->used_at = $user->created_at;
         $coupon->save();
+
+        $referralService->handleReferralPayout($user);
 
         event(new Registered($user));
 

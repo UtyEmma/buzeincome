@@ -73,6 +73,10 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasOne(Coupon::class, 'user_id');
     }
 
+    function referrer(){
+        return $this->hasOne(User::class, 'referrer_id');
+    }
+
     function wallet(){
         return $this->hasOne(Wallet::class, 'user_id');
     }

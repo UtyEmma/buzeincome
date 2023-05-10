@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CouponController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VendorController;
 use App\Library\Roles;
@@ -50,6 +51,10 @@ Route::middleware('auth')->group(function () {
                 Route::prefix('{user}')->group(function(){
                     Route::get('/delete', [VendorController::class, 'destroy'])->name('vendors.destroy');
                 });
+            });
+
+            Route::prefix('all-tasks')->group(function(){
+                Route::get('/', [TaskController::class, 'list'])->name('admin.tasks.list');
             });
         });
     });

@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('coupons', function (Blueprint $table) {
+        Schema::create('app_settings', function (Blueprint $table) {
             $table->id();
-            $table->string('unique_id');
-            $table->string('user_unique_id');
-            $table->string('coupon_code');
-            $table->string('status')->default('Not Used');
-            $table->number('amount')->default(5000);
+            $table->integer('refferal_comission')->default(env('DEFAULT_REFERRAL_COMISSION'));
+            $table->integer('second_level_refferal_comission')->default(env('DEFAULT_SECOND_LEVEL_REFERRAL_COMISSION'));
+            $table->integer('default_user_bal')->default('DEFAULT_BALANCE');
             $table->timestamps();
         });
     }
@@ -27,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('coupons');
+        Schema::dropIfExists('app_settings');
     }
 };
