@@ -7,20 +7,22 @@
                 <div class="nk-block-head nk-block-head-sm">
                     <div class="nk-block-between">
                         <div class="nk-block-head-content">
-                            <h3 class="nk-block-title page-title">Vendors</h3>
+                            <h3 class="nk-block-title page-title">Tasks</h3>
                         </div>
+
                         <div class="nk-block-head-content">
                             <div class="toggle-wrap nk-block-tools-toggle">
                                 <a href="#" class="btn btn-icon btn-trigger toggle-expand mr-n1" data-target="pageMenu"><em class="icon ni ni-more-v"></em></a>
                                 <div class="toggle-expand-content" data-content="pageMenu">
                                     <ul class="nk-block-tools g-3">
                                         <li>
-                                            <div class="form-control-wrap">
+                                            <!-- action="{{route('tasks.list')}}" -->
+                                            <form  method="get"  class="form-control-wrap">
                                                 <div class="form-icon form-icon-right">
                                                     <em class="icon ni ni-search"></em>
                                                 </div>
-                                                <input type="text" class="form-control" id="default-04" placeholder="Quick search by id">
-                                            </div>
+                                                <input type="text" name="search" class="form-control" id="default-04" placeholder="Quick search by id">
+                                            </form>
                                         </li>
                                         <li>
                                             <div class="drodown">
@@ -41,7 +43,7 @@
                                             </div>
                                         </li>
 
-                                        <x-vendors.create-vendor-modal />
+                                        <x-tasks.create-task-modal />
                                     </ul>
                                 </div>
                             </div>
@@ -57,10 +59,10 @@
                                     <label class="custom-control-label" for="uid"></label>
                                 </div>
                             </div>
-                            <div class="nk-tb-col tb-col-lg"><span>Vendor</span></div>
-                            <div class="nk-tb-col tb-col-md"><span>Active Coupons</span></div>
-                            <div class="nk-tb-col tb-col-md"><span>Total Coupons</span></div>
-                            <div class="nk-tb-col tb-col-md"><span>Sales</span></div>
+                            <div class="nk-tb-col tb-col-lg"><span>Title</span></div>
+                            <div class="nk-tb-col tb-col-md"><span>Link</span></div>
+                            <div class="nk-tb-col tb-col-md"><span>Reward</span></div>
+                            <div class="nk-tb-col tb-col-md"><span>No. of Completions</span></div>
                             <div class="nk-tb-col"><span class="d-none d-mb-block">Status</span></div>
                             <div class="nk-tb-col nk-tb-col-tools">
                                 <ul class="nk-tb-actions gx-1 my-n1">
@@ -79,8 +81,8 @@
                             </div>
                         </div>
 
-                        @forelse ($vendors as $vendor)
-                            <x-vendors.vendor-item :vendor="$vendor" />
+                        @forelse ($tasks as $task)
+                            <x-tasks.task-item :task="$task" />
                         @empty
                             <div class="nk-tb-item ">
                                 <div>

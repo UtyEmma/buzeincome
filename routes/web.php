@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CouponController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TaskCompletionController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VendorController;
@@ -53,8 +54,29 @@ Route::middleware('auth')->group(function () {
                 });
             });
 
-            Route::prefix('all-tasks')->group(function(){
-                Route::get('/', [TaskController::class, 'list'])->name('admin.tasks.list');
+            Route::prefix('tasks')->group(function(){
+                Route::get('/all', [TaskController::class, 'list'])->name('tasks.list');
+                Route::post('/', [TaskController::class, 'store'])->name('tasks.store');
+
+                Route::prefix('{task}')->group(function(){
+                    Route::get('/', [TaskController::class, 'show'])->name('tasks.single');
+
+                    Route::prefix('{taskCompletion}')->group(function(){
+                        Route::get('/approve', [TaskCompletionController::class, 'verify'])->name('tasks.verify');
+                    });
+                    Route::post('/update', [TaskController::class, 'update'])->name('tasks.update');
+                    Route::get('/delete', [TaskController::class, 'destroy'])->name('tasks.destroy');
+                });
+            });
+        });
+
+        Route::middleware('role:'.Roles::USER)->group(function(){
+            Route::prefix('tasks')->group(function(){
+                Route::get('/', [TaskController::class, 'index'])->name('tasks');
+                
+                Route::prefix('{task}')->group(function(){
+                    Route::get('/complete', [TaskCompletionController::class, 'store'])->name('tasks.complete');
+                });
             });
         });
     });

@@ -15,7 +15,7 @@ class ReferralService {
     function handleReferralPayout(User $user) : void {
         if(!$user->has('referrer')) return;
 
-        $settings = AppSettings::find();
+        $settings = AppSettings::first();
         $comission = $settings->refferal_comission;
 
         $firstLevelReferrer = $user->referrer;

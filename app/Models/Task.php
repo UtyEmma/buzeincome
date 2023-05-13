@@ -11,10 +11,19 @@ class Task extends Model
 {
     use HasFactory, HasUuids;
 
-    protected $fillable = ['title', 'description', 'image', 'duration', 'starts_at', 'expires_at', 'status'];
+    protected $fillable = ['title', 'description', 'image', 'duration', 'starts_at', 'expires_at', 'link', 'status', 'reward'];
 
-    protected $attribute = [
-        'status' => Status::ACTIVE
-    ];
+    function scopeIsActive($query){
+        $query->where('status', Status::ACTIVE);
+    }
+
+    function completion(){
+        return $this->hasOne(TaskCompletion::class, 'task_id')->where('user_id', auth()->id());
+    }
+
+    function completions(){
+        return $this->hasMany(TaskCompletion::class, 'task_id');
+    }
 
 }
+

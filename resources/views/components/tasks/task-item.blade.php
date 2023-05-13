@@ -6,17 +6,21 @@
         </div>
     </div>
     <div class="nk-tb-col tb-col-md">
-        <p class="tb-lead mb-0 lh-0"><a href="#">{{$vendor->firstname}} {{$vendor->lastname}}</a></p>
-        <p class="tb-lead lh-0 mt-0"><a href="mailto:{{$vendor->email}}">{{$vendor->email}}</a></p> 
+        <a href="{{route('tasks.single', [
+                'task' => $task->id
+            ])}}" class="tb-lead link mb-0 lh-0">{{$task->title}}</a>
     </div>
     <div class="nk-tb-col tb-col-md">
-        <span class="tb-sub">{{$vendor->active_coupons_count}}</span>
+        <span class="tb-sub"><a href="{{$task->link}}">{{$task->link}}</a></span>
     </div>
     <div class="nk-tb-col">
-        <span class="tb-sub">{{$vendor->coupons_count}}</span>
+        <span class="tb-sub">{{$task->reward}}</span>
+    </div>
+    <div class="nk-tb-col">
+        <span class="tb-sub">{{$task->completions_count}}</span>
     </div>
     <div class="nk-tb-col tb-col-sm">
-        <span class="tb-sub">{{$vendor->status}}</span>
+        <span class="tb-sub">{{$task->status}}</span>
     </div>
     <div class="nk-tb-col nk-tb-col-tools">
         <ul class="nk-tb-actions gx-1">
@@ -26,8 +30,8 @@
                     <div class="dropdown-menu dropdown-menu-right">
                         <ul class="link-list-opt no-bdr">
                             <li><a href="#"><em class="icon ni ni-money"></em><span>Assign Coupons</span></a></li>
-                            <li><a href="#"><em class="icon ni ni-pen"></em><span>Edit Vendor</span></a></li>
-                            <li><a href="{{route('vendors.destroy', ['user' => $vendor->id])}}" ><em class="icon ni ni-trash"></em><span>Delete Vendor</span></a></li>
+                            <li><a href="#"><em class="icon ni ni-pen"></em><span>Edit Task</span></a></li>
+                            <li><a href="{{route('tasks.destroy', ['task' => $task->id])}}" ><em class="icon ni ni-trash"></em><span>Delete Task</span></a></li>
                         </ul>
                     </div>
                 </div>

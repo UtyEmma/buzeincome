@@ -13,4 +13,8 @@ class Status {
 
     const EXPIRED = 'EXPIRED';
 
+    const UNVERIFIED = 'UNVERIFIED';
+    const VERIFIED = 'VERIFIED';
+
+
 }

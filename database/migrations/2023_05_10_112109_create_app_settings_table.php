@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('refferal_comission')->default(env('DEFAULT_REFERRAL_COMISSION'));
             $table->integer('second_level_refferal_comission')->default(env('DEFAULT_SECOND_LEVEL_REFERRAL_COMISSION'));
-            $table->integer('default_user_bal')->default('DEFAULT_BALANCE');
+            $table->integer('default_user_bal')->default(env('DEFAULT_BALANCE'));
             $table->timestamps();
         });
     }

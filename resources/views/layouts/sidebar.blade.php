@@ -28,7 +28,7 @@
 
                     @if (auth()->user()->isUser())
                         <li class="nk-menu-item">
-                            <a href="html/index-sales.html" class="nk-menu-link" data-original-title="" title="">
+                            <a href="{{route('tasks')}}" class="nk-menu-link" data-original-title="" title="">
                                 <span class="nk-menu-icon"><em class="icon ni ni-list"></em></span>
                                 <span class="nk-menu-text">Tasks</span>
                             </a>
@@ -55,7 +55,7 @@
                         </li>
 
                         <li class="nk-menu-item">
-                            <a href="html/index-sales.html" class="nk-menu-link" data-original-title="" title="">
+                            <a href="{{route('tasks.list')}}" class="nk-menu-link" data-original-title="" title="">
                                 <span class="nk-menu-icon"><em class="icon ni ni-task-c"></em></span>
                                 <span class="nk-menu-text">Tasks</span>
                             </a>

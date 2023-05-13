@@ -19,6 +19,8 @@ return new class extends Migration
             $table->integer('duration');
             $table->string('starts_at');
             $table->string('expires_at');
+            $table->string('link')->nullable();
+            $table->integer('reward');
             $table->string('status');
             $table->timestamps();
         });

@@ -11,14 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('coupons', function (Blueprint $table) {
+        Schema::create('task_completions', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('code');
-            $table->string('vendor_id');
-            $table->string('user_id')->nullable();
-            $table->string('status');
-            $table->integer('amount')->nullable();
-            $table->string('used_at')->nullable();
+            $table->string('user_id');
+            $table->string('task_id');
+            $table->string('verified_at')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('coupons');
+        Schema::dropIfExists('task_completions');
     }
 };

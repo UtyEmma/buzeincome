@@ -6,17 +6,25 @@
         </div>
     </div>
     <div class="nk-tb-col tb-col-md">
-        <p class="tb-lead mb-0 lh-0"><a href="#">{{$vendor->firstname}} {{$vendor->lastname}}</a></p>
-        <p class="tb-lead lh-0 mt-0"><a href="mailto:{{$vendor->email}}">{{$vendor->email}}</a></p> 
+        <a href="" class="tb-lead link mb-0 lh-0">{{$completed->user->firstname}} {{$completed->user->lastname}}</a>
     </div>
     <div class="nk-tb-col tb-col-md">
-        <span class="tb-sub">{{$vendor->active_coupons_count}}</span>
+        <span class="tb-sub"><a href=""></a></span>
     </div>
     <div class="nk-tb-col">
-        <span class="tb-sub">{{$vendor->coupons_count}}</span>
+        <span class="tb-sub">{{Date::parse($completed->created_at)->format('jS M, Y h:m A')}}</span>
+    </div>
+    <div class="nk-tb-col">
+        <span class="tb-sub">{{$completed->verified_at ? 'Verified' : 'Unverified'}}</span>
     </div>
     <div class="nk-tb-col tb-col-sm">
-        <span class="tb-sub">{{$vendor->status}}</span>
+        <span class="tb-sub"></span>
+        @if (!$completed->verified_at)        
+            <a href="{{route('tasks.verify', [
+                'task' => $completed->task_id,
+                'taskCompletion' => $completed->id
+            ])}}" class="btn btn-sm btn-success">Approve</a>
+        @endif
     </div>
     <div class="nk-tb-col nk-tb-col-tools">
         <ul class="nk-tb-actions gx-1">
@@ -26,8 +34,8 @@
                     <div class="dropdown-menu dropdown-menu-right">
                         <ul class="link-list-opt no-bdr">
                             <li><a href="#"><em class="icon ni ni-money"></em><span>Assign Coupons</span></a></li>
-                            <li><a href="#"><em class="icon ni ni-pen"></em><span>Edit Vendor</span></a></li>
-                            <li><a href="{{route('vendors.destroy', ['user' => $vendor->id])}}" ><em class="icon ni ni-trash"></em><span>Delete Vendor</span></a></li>
+                            <li><a href="#"><em class="icon ni ni-pen"></em><span>Edit Task</span></a></li>
+                            <!-- <li><a href="" ><em class="icon ni ni-trash"></em><span>Delete Task</span></a></li> -->
                         </ul>
                     </div>
                 </div>

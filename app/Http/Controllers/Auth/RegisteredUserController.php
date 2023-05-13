@@ -55,7 +55,7 @@ class RegisteredUserController extends Controller {
         $coupon->used_at = $user->created_at;
         $coupon->save();
 
-        $referralService->handleReferralPayout($user);
+        if($request->filled('referral_code')) $referralService->handleReferralPayout($user);
 
         event(new Registered($user));
 

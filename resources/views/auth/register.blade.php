@@ -33,11 +33,6 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label" for="email">Email</label>
-                    <input type="email" class="form-control form-control-lg" id="email" placeholder="Enter your email address or username" required autofocus autocomplete="email" name="email">
-                </div>
-
-                <div class="form-group">
                     <label class="form-label" for="password">Password</label>
                     <div class="form-control-wrap">
                         <a href="#" class="form-icon form-icon-right passcode-switch" data-target="password">

@@ -76,8 +76,6 @@ class VendorController extends Controller
                             ->where('status', Status::UNUSED)
                             ->with(['vendor'])
                             ->get();
-
-        // dd($coupons);
                             
         return view('vendors.vendor-coupons', [
             'coupons' => $coupons
