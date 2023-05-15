@@ -19,7 +19,7 @@ class Token {
         return $status;
     }
     
-    static function random(int $min = 10000, int $max = 999999, $table = null, $column = null){
+    static function random($table = null, $column = null, int $min = 10000, int $max = 999999){
         $random = rand($min, $max);
         if($table){
             $status = DB::table($table)->where($column, '===', $random)->exists();

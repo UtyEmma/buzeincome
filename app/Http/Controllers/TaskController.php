@@ -14,7 +14,7 @@ class TaskController extends Controller
      * Display a listing of the resource.
      */
     public function index() {
-        $tasks = Task::isActive()->with(['completion'])->get();
+        $tasks = Task::isActive()->isNotExpired()->with(['completion'])->get();
 
         return view('tasks.user-tasks', [
             'tasks' => $tasks

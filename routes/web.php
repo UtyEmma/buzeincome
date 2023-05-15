@@ -6,6 +6,7 @@ use App\Http\Controllers\TaskCompletionController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VendorController;
+use App\Http\Controllers\WithdrawalController;
 use App\Library\Roles;
 use Illuminate\Support\Facades\Route;
 
@@ -34,6 +35,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+        Route::get('/wallet', [ProfileController::class, 'wallet'])->name('profile.wallet');
 
         Route::middleware('role:'.Roles::VENDOR)->group(function(){
             Route::get('/my-coupons', [VendorController::class, 'coupons'])->name('coupons.vendor-coupons');
@@ -77,6 +80,10 @@ Route::middleware('auth')->group(function () {
                 Route::prefix('{task}')->group(function(){
                     Route::get('/complete', [TaskCompletionController::class, 'store'])->name('tasks.complete');
                 });
+            });
+
+            Route::prefix('wallet')->group(function(){
+                Route::post('withdraw', [WithdrawalController::class, 'store'])->name('wallet.withdraw');
             });
         });
     });

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Library\Status;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -15,6 +16,10 @@ class Task extends Model
 
     function scopeIsActive($query){
         $query->where('status', Status::ACTIVE);
+    }
+
+    function scopeIsNotExpired(Builder $query) {
+        $query->where('expires_at', '>', now());
     }
 
     function completion(){

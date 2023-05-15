@@ -18,6 +18,8 @@ class User extends Authenticatable implements MustVerifyEmail
 
     protected $fillable = [ 'firstname', 'lastname', 'email', 'password', 'phone', 'socials', 'referral_id', 'role', 'status', 'image'];
 
+    protected $with = ['wallet'];
+
     protected $hidden = [
         'password',
         'remember_token',
@@ -83,6 +85,10 @@ class User extends Authenticatable implements MustVerifyEmail
 
     function coupons(){
         return $this->hasMany(Coupon::class, 'vendor_id');
+    }
+
+    function withdrawals(){
+        return $this->hasMany(Withdrawal::class, 'user_id');
     }
 
     function users(){

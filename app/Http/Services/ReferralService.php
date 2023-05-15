@@ -47,9 +47,7 @@ class ReferralService {
 
     private function handlePayout(User $user, int $comission) : void {
         $wallet = $user->wallet;
-        
-        $wallet->ref_bal += $comission;
-        $wallet->total_bal += $comission;
+        $wallet->main_bal += $comission;
         $wallet->save();
     }
 

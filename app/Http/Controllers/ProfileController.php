@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\User;
+use App\Models\Withdrawal;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -21,6 +23,14 @@ class ProfileController extends Controller
         ]);
     }
 
+    public function wallet(Request $request) {
+        $user = $request->user()->load(['withdrawals']);
+
+        
+        return view('profile.wallet', [
+            'user' => $user
+        ]);
+    }
     /**
      * Update the user's profile information.
      */
