@@ -81,76 +81,88 @@
                 <div class="modal-content">
                     <a href="#" class="close" data-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
                     <div class="modal-body modal-body-lg">
-                        <h5 class="title mb-3">Update Profile</h5>
-                        <div class="mb-3">
-                            <p class="mb-2 fs-16px">Personal Information</p>
-                            <div class="row gy-4">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="firstname">First Name</label>
-                                        <input type="text" class="form-control form-control-lg" id="firstname" value="{{$user->firstname}}" placeholder="Enter First name">
+                        <form action="{{route('profile.update')}}" method="POST" >
+                            @csrf()
+
+                            <h5 class="title mb-3">Update Profile</h5>
+                            <div class="mb-3">
+                                <p class="mb-2 fs-16px">Personal Information</p>
+                                <div class="row gy-4">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="firstname">First Name</label>
+                                            <input type="text" class="form-control form-control-lg" id="firstname" name="firstname" value="{{$user->firstname}}" placeholder="Enter First name">
+                                            <x-input-error key="firstname" />
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="lastname">Last Name</label>
-                                        <input type="text" class="form-control form-control-lg" id="lastname" value="{{$user->lastname}}" placeholder="Enter Last name">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="lastname">Last Name</label>
+                                            <input type="text" class="form-control form-control-lg" id="lastname" name="lastname" value="{{$user->lastname}}" placeholder="Enter Last name">
+                                            <x-input-error key="lastname" />
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="phone">Phone Number</label>
-                                        <input type="text" class="form-control form-control-lg" id="phone" value="{{$user->phone}}" placeholder="Phone Number">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="email">Email Address</label>
+                                            <input type="text" class="form-control form-control-lg" id="email" name="email" value="{{$user->email}}" placeholder="Email Address">
+                                            <x-input-error key="email" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="phone">Phone Number</label>
+                                            <input type="text" class="form-control form-control-lg" id="phone" name="phone" value="{{$user->phone}}" placeholder="Phone Number">
+                                            <x-input-error key="phone" />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="mb-3">   
-                            <p class="mb-2 fs-16px">Social Media Handles</p>
-
-                            <div class="row gy-4">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="facebook">Facebook Username</label>
-                                        <input type="text" class="form-control form-control-lg" id="facebook"  placeholder="Enter First name">
+                            
+                            <div class="mb-3">   
+                                <p class="mb-2 fs-16px">Social Media Handles</p>
+                                
+                                <div class="row gy-4">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="facebook">Facebook Username</label>
+                                            <input type="text" class="form-control form-control-lg" name="facebook" id="facebook"  placeholder="Facebook">
+                                            <x-input-error key="facebook" />
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="lastname">Twitter Username</label>
-                                        <input type="text" class="form-control form-control-lg" id="lastname" value="{{$user->lastname}}" placeholder="Enter Last name">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="twitter">Twitter Username</label>
+                                            <input type="text" class="form-control form-control-lg" id="twitter" name="twitter" value="{{$user->twitter}}" placeholder="Twitter">
+                                            <x-input-error key="twitter" />
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="phone">Instagram Username</label>
-                                        <input type="text" class="form-control form-control-lg" id="phone" value="{{$user->phone}}" placeholder="Phone Number">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="instagram">Instagram Username</label>
+                                            <input type="text" class="form-control form-control-lg" id="instagram" name="instagram" value="{{$user->instagram}}" placeholder="Instagram">
+                                            <x-input-error key="instagram" />
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="phone">Tiktok Username</label>
-                                        <input type="text" class="form-control form-control-lg" id="phone" value="{{$user->phone}}" placeholder="Phone Number">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="phone">Tiktok Username</label>
-                                        <input type="text" class="form-control form-control-lg" id="phone" value="{{$user->phone}}" placeholder="Phone Number">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="tiktok">Tiktok Username</label>
+                                            <input type="text" class="form-control form-control-lg" id="tiktok" value="{{$user->tiktok}}" name="tiktok" placeholder="Tiktok">
+                                            <x-input-error key="tiktok" />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
-                            <li>
-                                <a href="#" class="btn btn-lg btn-primary">Update Profile</a>
-                            </li>
-                            <li>
-                                <a href="#" data-dismiss="modal" class="link link-light">Cancel</a>
-                            </li>
-                        </ul>
+    
+                            <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
+                                <li>
+                                    <button class="btn btn-lg btn-primary">Update Profile</button>
+                                </li>
+                                <li>
+                                    <a href="#" data-dismiss="modal" class="link link-light">Cancel</a>
+                                </li>
+                            </ul>
+                        </form>
                     </div><!-- .modal-body -->
                 </div><!-- .modal-content -->
             </div><!-- .modal-dialog -->

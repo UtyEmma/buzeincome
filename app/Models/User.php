@@ -16,7 +16,7 @@ class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable, HasUuids;
 
-    protected $fillable = [ 'firstname', 'lastname', 'email', 'password', 'phone', 'socials', 'referral_id', 'role', 'status', 'image'];
+    protected $fillable = [ 'firstname', 'lastname', 'email', 'password', 'phone', 'socials', 'referral_id', 'role', 'status', 'image', 'facebook', 'twitter', 'instagram', 'tiktok'];
 
     protected $with = ['wallet', 'bankAccount'];
 

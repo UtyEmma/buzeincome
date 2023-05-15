@@ -18,7 +18,7 @@
                                 <label for="" class="form-label">Bank</label>
                                 <select name="bank" data-search="true" data-ui="lg" id="" class="form-select">
                                     @forelse ($banks as $bank)
-                                        <option value="{{$bank->code}}">{{$bank->name}}</option>
+                                        <option  value="{{$bank->code}}">{{$bank->name}}</option>
                                     @empty
                                         
                                     @endforelse

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Library\FileHandler;
 use App\Models\Bank;
 use App\Models\BankAccount;
 use App\Models\User;
@@ -68,9 +69,25 @@ class ProfileController extends Controller
     /**
      * Update the user's profile information.
      */
-    public function update(ProfileUpdateRequest $request): RedirectResponse
+    public function update(Request $request): RedirectResponse
     {
-        $request->user()->fill($request->validated());
+        $validated = $request->validate([
+            'firstname' => 'required|string',
+            'lastname' => 'required|string',
+            'email' => 'required|string',
+            'phone' => 'required|numeric',
+            'image' => 'nullable|image',
+            'facebook' => 'nullable|string',
+            'twitter' => 'nullable|string',
+            'instagram' => 'nullable|string',
+            'tiktok' => 'nullable|string',
+        ]);
+
+        if($request->hasFile('image')){
+            $request->user()->image = FileHandler::upload($request->file('image'));
+        }
+
+        $request->user()->fill($validated);
 
         if ($request->user()->isDirty('email')) {
             $request->user()->email_verified_at = null;
