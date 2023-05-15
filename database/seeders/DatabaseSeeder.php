@@ -7,6 +7,7 @@ namespace Database\Seeders;
 use App\Models\User;
 use App\Library\Roles;
 use App\Models\AppSettings;
+use App\Models\Bank;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -34,6 +35,11 @@ class DatabaseSeeder extends Seeder
                 'second_level_refferal_comission' => env('DEFAULT_SECOND_LEVEL_REFERRAL_COMISSION'),
                 'default_user_bal' => env('DEFAULT_BALANCE')
             ]);
+        }
+
+        if(Bank::all()->isEmpty()){  
+            $banks = Bank::retrieve();     
+            Bank::insert($banks);
         }
     }
 }

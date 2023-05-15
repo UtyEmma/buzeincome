@@ -62,7 +62,7 @@
                                         <ul class="link-list-menu">
                                             <li><a class="active" href="{{route('profile.edit')}}"><em class="icon ni ni-user-c"></em><span>Personal Infomation</span></a></li>
                                             <li><a href="{{route('profile.wallet')}}"><em class="icon ni ni-wallet"></em><span>Wallet</span></a></li>
-                                            <li><a href="html/user-profile-activity.html"><em class="icon ni ni-activity-round-fill"></em><span>Account Activity</span></a></li>
+                                            <li><a href="{{route('profile.referral')}}"><em class="icon ni ni-users"></em><span>Referrals</span></a></li>
                                             <li><a href="html/user-profile-setting.html"><em class="icon ni ni-lock-alt-fill"></em><span>Security Settings</span></a></li>
                                         </ul>
                                     </div><!-- .card-inner -->

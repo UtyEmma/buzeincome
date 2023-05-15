@@ -38,6 +38,8 @@ Route::middleware('auth')->group(function () {
 
         Route::get('/wallet', [ProfileController::class, 'wallet'])->name('profile.wallet');
 
+        Route::get('/referrals', [ProfileController::class, 'referrals'])->name('profile.referral');
+
         Route::middleware('role:'.Roles::VENDOR)->group(function(){
             Route::get('/my-coupons', [VendorController::class, 'coupons'])->name('coupons.vendor-coupons');
             Route::get('/coupon-history', [VendorController::class, 'couponHistory'])->name('coupons.vendor-coupon-history');
@@ -80,6 +82,10 @@ Route::middleware('auth')->group(function () {
                 Route::prefix('{task}')->group(function(){
                     Route::get('/complete', [TaskCompletionController::class, 'store'])->name('tasks.complete');
                 });
+            });
+
+            Route::prefix('profile')->group(function(){
+                Route::post('/bank-account', [ProfileController::class, 'updateBankAccount'])->name('profile.update-bank_account');
             });
 
             Route::prefix('wallet')->group(function(){

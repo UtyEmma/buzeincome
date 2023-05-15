@@ -24,47 +24,37 @@
                     <span class="data-value text-soft">{{$user->phone ?? 'Not Added Yet'}}</span>
                 </div>
                 <div class="data-col data-col-end"><span class="data-more"><em class="icon ni ni-forward-ios"></em></span></div>
-            </div><!-- data-item -->
-            <div class="data-item" data-toggle="modal" data-target="#profile-edit">
-                <div class="data-col">
-                    <span class="data-label">Date of Birth</span>
-                    <span class="data-value">29 Feb, 1986</span>
-                </div>
-                <div class="data-col data-col-end"><span class="data-more"><em class="icon ni ni-forward-ios"></em></span></div>
-            </div><!-- data-item -->
-            <div class="data-item" data-toggle="modal" data-target="#profile-edit" data-tab-target="#address">
-                <div class="data-col">
-                    <span class="data-label">Address</span>
-                    <span class="data-value">2337 Kildeer Drive,<br>Kentucky, Canada</span>
-                </div>
-                <div class="data-col data-col-end"><span class="data-more"><em class="icon ni ni-forward-ios"></em></span></div>
-            </div><!-- data-item -->
+            </div>
         </div><!-- data-list -->
         <div class="nk-data data-list">
             <div class="data-head">
-                <h6 class="overline-title">Preferences</h6>
+                <h6 class="overline-title">Bank Account Information</h6>
+                <!-- <button class="btn-sm btn btn-link">Edit</button> -->
             </div>
             <div class="data-item">
                 <div class="data-col">
-                    <span class="data-label">Language</span>
-                    <span class="data-value">English (United State)</span>
+                    <span class="data-label">Bank</span>
+                    <span class="data-value">{{$user->bankAccount->bankInfo->name}}</span>
                 </div>
-                <div class="data-col data-col-end"><a href="#" data-toggle="modal" data-target="#profile-language" class="link link-primary">Change Language</a></div>
-            </div><!-- data-item -->
+                <div class="data-col data-col-end"><a href="#" data-toggle="modal" data-target="#update-bank-info" class="link link-primary">Update</a></div>
+                @include('profile.partials.update-bank-modal', [
+                    'banks' => $banks
+                    ])
+            </div>
             <div class="data-item">
                 <div class="data-col">
-                    <span class="data-label">Date Format</span>
-                    <span class="data-value">M d, YYYY</span>
+                    <span class="data-label">Account Name</span>
+                    <span class="data-value">{{$user->bankAccount->account_name}}</span>
                 </div>
-                <div class="data-col data-col-end"><a href="#" data-toggle="modal" data-target="#profile-language" class="link link-primary">Change</a></div>
-            </div><!-- data-item -->
+                <div class="data-col data-col-end"><a href="#" data-toggle="modal" data-target="#profile-language" class="link link-primary"></a></div>
+            </div>
             <div class="data-item">
                 <div class="data-col">
-                    <span class="data-label">Timezone</span>
-                    <span class="data-value">Bangladesh (GMT +6)</span>
+                    <span class="data-label">Account Number</span>
+                    <span class="data-value">{{$user->bankAccount->account_number}}</span>
                 </div>
-                <div class="data-col data-col-end"><a href="#" data-toggle="modal" data-target="#profile-language" class="link link-primary">Change</a></div>
-            </div><!-- data-item -->
-        </div><!-- data-list -->
+                <div class="data-col data-col-end"><a href="#" data-toggle="modal" data-target="#profile-language" class="link link-primary"></a></div>
+            </div>
+        </div>
     </div>
 </x-profile-layout>
