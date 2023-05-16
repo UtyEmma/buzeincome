@@ -1,12 +1,7 @@
 @inject('status', 'App\Library\Status')
 
-<li class="nk-block-tools-opt">
-    <a href="#" class="btn btn-primary d-inline-flex" data-toggle="modal" data-target="#create-new-task"><em class="icon ni ni-plus"></em><span>Create New Task</span></a>
-</li>
-
-
 @push('modals') 
-    <div class="modal fade" tabindex="-1" id="create-new-task">
+    <div class="modal fade" tabindex="-1" id="{{$id}}">
         <div class="modal-dialog">
             <div class="modal-content">
                 <a href="#" class="close" data-dismiss="modal" aria-label="Close">
@@ -15,7 +10,7 @@
                 <div class="modal-header">
                     <h5 class="modal-title">Create a New Task</h5>
                 </div>
-                <form action="{{route('tasks.store')}}" enctype="multipart/form-data" method="post">
+                <form action="{{isset($task) && $task ? route('tasks.update') : route('tasks.store') }}" enctype="multipart/form-data" method="post">
                     @csrf
                     <div class="modal-body">
                         <div class="form-group row">
@@ -31,13 +26,13 @@
                         </div>
                         <div class="form-group">
                             <label for="title" class="form-label">Title</label>
-                            <input name="title" id="title" placeholder="Task Title" class="form-control form-control-lg" />
+                            <input name="title" id="title" value="{{$task->title ?? ''}}" placeholder="Task Title" class="form-control form-control-lg" />
                             <x-input-error key="title" />
                         </div>
 
                         <div class="form-group">
                             <label for="description" class="form-label">Description</label>
-                            <textarea type="text" id="description" name="description" placeholder="Task Description" class="form-control form-control-lg"></textarea>
+                            <textarea type="text" id="description" value="{{$task->description ?? ''}}" name="description" placeholder="Task Description" class="form-control form-control-lg"></textarea>
                             <x-input-error key="description" />
                         </div>
 
@@ -56,7 +51,7 @@
                             <div class="col-md-8">
                                 <div class="form-group">
                                     <label for="link" class="form-label">Link</label>
-                                    <input name="link" id="link" type="url" placeholder="Task Link" class="form-control form-control-lg" />
+                                    <input name="link" id="link" value="{{$task->link ?? ''}}" type="url" placeholder="Task Link" class="form-control form-control-lg" />
                                     <x-input-error key="link" />
                                 </div>
                             </div>
@@ -68,7 +63,7 @@
                                         <div class="form-icon form-icon-left">
                                             <em class="icon ni ni-sign-dollar"></em>
                                         </div>
-                                        <input type="number" class="form-control form-control-lg appearance-none" name="reward" id="reward" placeholder="Task Reward">
+                                        <input type="number" value="{{$task->reward ?? ''}}" class="form-control form-control-lg appearance-none" name="reward" id="reward" placeholder="Task Reward">
                                     </div>
                                     <x-input-error key="reward" />
                                 </div>

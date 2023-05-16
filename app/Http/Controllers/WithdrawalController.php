@@ -50,7 +50,7 @@ class WithdrawalController extends Controller {
     }
 
     function list(Request $request){
-        $withdrawals = Withdrawal::with(['user'])->get();
+        $withdrawals = Withdrawal::with(['user'])->paginate();
 
         return view('withdrawals.list', [
             'withdrawals' => $withdrawals

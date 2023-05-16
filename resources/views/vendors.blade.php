@@ -45,9 +45,10 @@
                                     </ul>
                                 </div>
                             </div>
-                        </div><!-- .nk-block-head-content -->
-                    </div><!-- .nk-block-between -->
-                </div><!-- .nk-block-head -->
+                        </div>
+                    </div>
+                </div>
+                
                 <div class="nk-block">
                     <div class="nk-tb-list is-separate is-medium mb-3">
                         <div class="nk-tb-item nk-tb-head">
