@@ -28,7 +28,7 @@
 
         @stack('modals')
         
-        @include('sweetalert::alert')
+       
 
         <script src="{{asset('assets/js/bundle.js?ver=2.2.0')}}"></script>
         <script src="{{asset('assets/js/scripts.js?ver=2.2.0')}}"></script>

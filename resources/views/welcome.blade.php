@@ -10,12 +10,12 @@
           <div class="row">
             <div class="col-lg-7">
               <div class="slider-content-inner">
-                <h2>Get Business Solution With Boseo</h2>
-                <p>Bring more traffic to your website with the help <br>of new proven techniques I can offer</p>
-                <h5>Get 20% Off Your First Service</h5>
+                <h2>The new Face of Marketing and Advert</h2>
+                <p>Bring more traffic to your website with the help <br>of new proven marketing techniques we offer</p>
+                <h5>Get 20% Off as a Vendor</h5>
                 <form class="input-btn-group">
                   <input class="form-control no-border" type="text" placeholder="Email">
-                  <button class="btn btn-theme" type="button">Analyze</button>
+                  <button class="btn btn-theme" type="button">Contact</button>
                 </form>
               </div>
             </div>
@@ -44,7 +44,7 @@
     <section class="brand-logo-area brand-logo-digital-marketer-area">
       <div class="container">
         <div class="section-title text-center">
-          <h5>I Am Proudly Worked With</h5>
+          <h5>We Have Proudly Worked With</h5>
         </div>
         <div class="row">
           <div class="col-lg-12">

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('user_unique_id');
             $table->string('coupon_code');
             $table->string('status')->default('Not Used');
-            $table->number('amount')->default(5000);
+            $table->integer('amount')->default(5000);
             $table->timestamps();
         });
     }
