@@ -27,6 +27,43 @@
             </div>
         </div><!-- data-list -->
         
+        <div class="nk-data data-list">
+            <div class="data-head">
+                <h6 class="overline-title">Social Media Handles</h6>
+                <!-- <button class="btn-sm btn btn-link">Edit</button> -->
+            </div>
+
+            <div class="data-item" data-toggle="modal" data-target="#profile-edit">
+                <div class="data-col">
+                    <span class="data-label">Twitter</span>
+                    <span class="data-value text-soft">{{$user->twitter ?? 'Not Added Yet'}}</span>
+                </div>
+                <div class="data-col data-col-end"><span class="data-more"><em class="icon ni ni-forward-ios"></em></span></div>
+            </div>
+            <div class="data-item" data-toggle="modal" data-target="#profile-edit">
+                <div class="data-col">
+                    <span class="data-label">Facebook</span>
+                    <span class="data-value text-soft">{{$user->facebook ?? 'Not Added Yet'}}</span>
+                </div>
+                <div class="data-col data-col-end"><span class="data-more"><em class="icon ni ni-forward-ios"></em></span></div>
+            </div>
+
+            <div class="data-item" data-toggle="modal" data-target="#profile-edit">
+                <div class="data-col">
+                    <span class="data-label">Instagram</span>
+                    <span class="data-value text-soft">{{$user->instagram ?? 'Not Added Yet'}}</span>
+                </div>
+                <div class="data-col data-col-end"><span class="data-more"><em class="icon ni ni-forward-ios"></em></span></div>
+            </div>
+            <div class="data-item" data-toggle="modal" data-target="#profile-edit">
+                <div class="data-col">
+                    <span class="data-label">TikTok</span>
+                    <span class="data-value text-soft">{{$user->tiktok ?? 'Not Added Yet'}}</span>
+                </div>
+                <div class="data-col data-col-end"><span class="data-more"><em class="icon ni ni-forward-ios"></em></span></div>
+            </div>
+        </div>
+
         @if ($user->isUser())
             <div class="nk-data data-list">
                 <div class="data-head">

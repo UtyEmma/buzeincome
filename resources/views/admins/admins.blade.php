@@ -65,21 +65,7 @@
                             <div class="nk-tb-col tb-col-lg"><span>Name</span></div>
                             <div class="nk-tb-col tb-col-md"><span>Email Address</span></div>
                             <div class="nk-tb-col"><span class="d-none d-mb-block">Status</span></div>
-                            <div class="nk-tb-col nk-tb-col-tools">
-                                <ul class="nk-tb-actions gx-1 my-n1">
-                                    <li>
-                                        <div class="drodown">
-                                            <a href="#" class="dropdown-toggle btn btn-icon btn-trigger mr-n1" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
-                                            <div class="dropdown-menu dropdown-menu-right">
-                                                <ul class="link-list-opt no-bdr">
-                                                    <li><a href="#"><em class="icon ni ni-edit"></em><span>Update Status</span></a></li>
-                                                    <li><a href="#"><em class="icon ni ni-truck"></em><span>Mark as Delivered</span></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
+                            <div class="nk-tb-col nk-tb-col-tools"></div>
                         </div>
 
                         @forelse ($admins as $admin)

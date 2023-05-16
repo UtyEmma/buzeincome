@@ -21,8 +21,8 @@
                     <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                     <div class="dropdown-menu dropdown-menu-right">
                         <ul class="link-list-opt no-bdr">
-                            <li><a href="#" data-toggle="modal" data-target="#add-new-admin-{{$admin->id}}"><em class="icon ni ni-pen"></em><span>Edit Vendor</span></a></li>
-                            <li><x-swal href="{{route('admin.destroy', ['user' => $admin->id])}}" ><em class="icon ni ni-trash"></em><span>Delete Vendor</span></x-swal></li>
+                            <li><a href="#" data-toggle="modal" data-target="#add-new-admin-{{$admin->id}}"><em class="icon ni ni-pen"></em><span>Edit Admin</span></a></li>
+                            <li><x-swal href="{{route('admin.destroy', ['user' => $admin->id])}}" ><em class="icon ni ni-trash"></em><span>Delete Admin</span></x-swal></li>
                         </ul>
                     </div>
                 </div>
