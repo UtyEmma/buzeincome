@@ -10,7 +10,8 @@
                 <div class="modal-header">
                     <h5 class="modal-title">Create a New Task</h5>
                 </div>
-                <form action="{{isset($task) && $task ? route('tasks.update') : route('tasks.store') }}" enctype="multipart/form-data" method="post">
+                <form action="{{isset($task) && $task ? route('tasks.update', [
+                    'task' => $task->id]) : route('tasks.store') }}" enctype="multipart/form-data" method="post">
                     @csrf
                     <div class="modal-body">
                         <div class="form-group row">
