@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
                 'lastname' => 'Admin',
                 'email' => 'admin@localhost.com',
                 'password' => Hash::make('1234567890'),
-                'role' => Roles::ADMIN,
+                'role' => Roles::SUPERADMIN,
                 'email_verified_at' => now()
             ]);
         }

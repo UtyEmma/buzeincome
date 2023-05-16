@@ -62,18 +62,27 @@
                         </li>
 
                         <li class="nk-menu-item">
-                            <a href="html/index-sales.html" class="nk-menu-link" data-original-title="" title="">
-                                <span class="nk-menu-icon"><em class="icon ni ni-briefcase"></em></span>
-                                <span class="nk-menu-text">Admins</span>
+                            <a href="{{route('withdrawals')}}" class="nk-menu-link" data-original-title="" title="">
+                                <span class="nk-menu-icon"><em class="icon ni ni-wallet-out"></em></span>
+                                <span class="nk-menu-text">Withdrawals</span>
                             </a>
                         </li>
 
-                        <li class="nk-menu-item">
-                            <a href="html/index-analytics.html" class="nk-menu-link" data-original-title="" title="">
-                                <span class="nk-menu-icon"><em class="icon ni ni-setting-alt"></em></span>
-                                <span class="nk-menu-text">Settings</span>
-                            </a>
-                        </li>
+                        @if (auth()->user()->isSuperAdmin())
+                            <li class="nk-menu-item">
+                                <a href="{{route('admins')}}" class="nk-menu-link" data-original-title="" title="">
+                                    <span class="nk-menu-icon"><em class="icon ni ni-briefcase"></em></span>
+                                    <span class="nk-menu-text">Admins</span>
+                                </a>
+                            </li>
+
+                            <li class="nk-menu-item">
+                                <a href="{{route('settings')}}" class="nk-menu-link" data-original-title="" title="">
+                                    <span class="nk-menu-icon"><em class="icon ni ni-setting-alt"></em></span>
+                                    <span class="nk-menu-text">Settings</span>
+                                </a>
+                            </li>
+                        @endif
                     @endif
 
                     @if (auth()->user()->isVendor())

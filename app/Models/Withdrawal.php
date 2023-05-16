@@ -17,4 +17,8 @@ class Withdrawal extends Model
         'status' => Status::NEW
     ];
 
+    function user(){
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
 }

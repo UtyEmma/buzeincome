@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AppSettingsController;
 use App\Http\Controllers\CouponController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TaskCompletionController;
@@ -24,6 +26,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
 
 
 Route::middleware('auth')->group(function () {
@@ -59,6 +62,15 @@ Route::middleware('auth')->group(function () {
                 });
             });
 
+            Route::prefix('withdrawals')->group(function(){
+                Route::get('/', [WithdrawalController::class, 'list'])->name('withdrawals');
+
+                Route::prefix('{withdrawal}')->group(function(){
+                    Route::get('/delete', [WithdrawalController::class, 'destroy'])->name('withdrawal.delete');
+                    Route::get('/{status}', [WithdrawalController::class, 'update'])->name('withdrawal.approve');
+                });
+            });
+
             Route::prefix('tasks')->group(function(){
                 Route::get('/all', [TaskController::class, 'list'])->name('tasks.list');
                 Route::post('/', [TaskController::class, 'store'])->name('tasks.store');
@@ -73,6 +85,25 @@ Route::middleware('auth')->group(function () {
                     Route::get('/delete', [TaskController::class, 'destroy'])->name('tasks.destroy');
                 });
             });
+
+            Route::middleware('role:'.Roles::SUPERADMIN)->group(function(){
+                Route::prefix('settings')->group(function(){
+                    Route::get('/', [AppSettingsController::class, 'index'])->name('settings');
+                    Route::post('/', [AppSettingsController::class, 'update'])->name('settings.update');
+                });
+
+                Route::prefix('admins')->group(function(){
+                    Route::get('/', [AdminController::class, 'index'])->name('admins');
+                    Route::post('/', [AdminController::class, 'store'])->name('admins.store');
+
+                    Route::prefix('{user}')->group(function(){
+                        Route::get('/delete', [AdminController::class, 'destroy'])->name('admin.destroy');
+                        Route::post('/update', [AdminController::class, 'update'])->name('admins.update');
+                    });
+                });
+            });
+
+
         });
 
         Route::middleware('role:'.Roles::USER)->group(function(){

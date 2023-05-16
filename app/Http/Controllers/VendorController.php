@@ -67,7 +67,6 @@ class VendorController extends Controller
         Alert::success('Vendor Account Created Successfully!');
 
         return back();
-
     }
 
     function coupons(Request $request) {

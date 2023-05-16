@@ -49,4 +49,41 @@ class WithdrawalController extends Controller {
         return back();
     }
 
+    function list(Request $request){
+        $withdrawals = Withdrawal::with(['user'])->get();
+
+        return view('withdrawals.list', [
+            'withdrawals' => $withdrawals
+        ]);
+    }
+
+    function update(Request $request, Withdrawal $withdrawal, $status) {
+        if($status !== Status::DENIED && $status !== Status::COMPLETED) {
+            Alert::error("Invalid Withdrawal Status"); 
+            return back();
+        }
+
+        $withdrawal->status = $status;
+        $withdrawal->save();
+
+        $wallet = $withdrawal->user->wallet;
+
+        if($status === Status::DENIED){
+            $wallet->main_bal += $withdrawal->amount;
+        }
+
+        $wallet->escrow_bal -= $withdrawal->amount;
+        $wallet->save();
+
+        // Send Notification
+        Alert::success("Withdrawal $status!");
+
+        return back();
+    }
+
+    function destroy(Withdrawal $withdrawal){
+        $withdrawal->delete();
+        Alert::success('Withdrawal Deleted Successfully!');
+        return back();
+    }
 }
