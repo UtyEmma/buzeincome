@@ -16,9 +16,6 @@
         <span class="tb-sub">{{$vendor->coupons_count}}</span>
     </div>
     <div class="nk-tb-col tb-col-sm">
-        <span class="tb-sub">Arnold Armstrong</span>
-    </div>
-    <div class="nk-tb-col tb-col-sm">
         <span class="tb-sub">{{$vendor->status}}</span>
     </div>
     <div class="nk-tb-col nk-tb-col-tools">

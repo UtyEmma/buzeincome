@@ -10,7 +10,13 @@ class Wallet extends Model
 {
     use HasFactory, HasUuids;
 
-    protected $fillable = ['user_id', 'total_bal', 'main_bal', 'ref_bal'];
+    protected $fillable = ['user_id', 'escrow_bal', 'main_bal'];
+
+    protected static function booted(){
+        static::updated(function(Wallet $wallet){
+            $wallet->total_bal = $wallet->main_bal + $wallet->ref_bal;
+        });
+    }
 
     
 }

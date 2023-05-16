@@ -16,7 +16,9 @@ class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable, HasUuids;
 
-    protected $fillable = [ 'firstname', 'lastname', 'email', 'password', 'phone', 'socials', 'referral_id', 'role', 'status', 'image'];
+    protected $fillable = [ 'firstname', 'lastname', 'email', 'password', 'phone', 'socials', 'referral_id', 'role', 'status', 'image', 'facebook', 'twitter', 'instagram', 'tiktok'];
+
+    protected $with = ['wallet', 'bankAccount'];
 
     protected $hidden = [
         'password',
@@ -73,6 +75,10 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasOne(Coupon::class, 'user_id');
     }
 
+    function referrer(){
+        return $this->hasOne(User::class, 'referrer_id');
+    }
+
     function wallet(){
         return $this->hasOne(Wallet::class, 'user_id');
     }
@@ -81,8 +87,20 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Coupon::class, 'vendor_id');
     }
 
+    function bankAccount(){
+        return $this->hasOne(BankAccount::class, 'user_id');
+    }
+
+    function withdrawals(){
+        return $this->hasMany(Withdrawal::class, 'user_id');
+    }
+
     function users(){
         return $this->hasManyThrough(Coupon::class, User::class, 'coupon_id', 'vendor_id', 'id', 'id' );
+    }
+
+    function referrals() {
+        return $this->hasMany(Referral::class, 'referrer_id');
     }
 
     function vendor(){

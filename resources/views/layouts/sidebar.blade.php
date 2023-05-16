@@ -28,7 +28,7 @@
 
                     @if (auth()->user()->isUser())
                         <li class="nk-menu-item">
-                            <a href="html/index-sales.html" class="nk-menu-link" data-original-title="" title="">
+                            <a href="{{route('tasks')}}" class="nk-menu-link" data-original-title="" title="">
                                 <span class="nk-menu-icon"><em class="icon ni ni-list"></em></span>
                                 <span class="nk-menu-text">Tasks</span>
                             </a>
@@ -55,25 +55,34 @@
                         </li>
 
                         <li class="nk-menu-item">
-                            <a href="html/index-sales.html" class="nk-menu-link" data-original-title="" title="">
+                            <a href="{{route('tasks.list')}}" class="nk-menu-link" data-original-title="" title="">
                                 <span class="nk-menu-icon"><em class="icon ni ni-task-c"></em></span>
                                 <span class="nk-menu-text">Tasks</span>
                             </a>
                         </li>
 
                         <li class="nk-menu-item">
-                            <a href="html/index-sales.html" class="nk-menu-link" data-original-title="" title="">
-                                <span class="nk-menu-icon"><em class="icon ni ni-briefcase"></em></span>
-                                <span class="nk-menu-text">Admins</span>
+                            <a href="{{route('withdrawals')}}" class="nk-menu-link" data-original-title="" title="">
+                                <span class="nk-menu-icon"><em class="icon ni ni-wallet-out"></em></span>
+                                <span class="nk-menu-text">Withdrawals</span>
                             </a>
                         </li>
 
-                        <li class="nk-menu-item">
-                            <a href="html/index-analytics.html" class="nk-menu-link" data-original-title="" title="">
-                                <span class="nk-menu-icon"><em class="icon ni ni-setting-alt"></em></span>
-                                <span class="nk-menu-text">Settings</span>
-                            </a>
-                        </li>
+                        @if (auth()->user()->isSuperAdmin())
+                            <li class="nk-menu-item">
+                                <a href="{{route('admins')}}" class="nk-menu-link" data-original-title="" title="">
+                                    <span class="nk-menu-icon"><em class="icon ni ni-briefcase"></em></span>
+                                    <span class="nk-menu-text">Admins</span>
+                                </a>
+                            </li>
+
+                            <li class="nk-menu-item">
+                                <a href="{{route('settings')}}" class="nk-menu-link" data-original-title="" title="">
+                                    <span class="nk-menu-icon"><em class="icon ni ni-setting-alt"></em></span>
+                                    <span class="nk-menu-text">Settings</span>
+                                </a>
+                            </li>
+                        @endif
                     @endif
 
                     @if (auth()->user()->isVendor())
@@ -102,14 +111,14 @@
                     </li>
 
                     <li class="nk-menu-item">
-                        <a href="html/index-analytics.html" class="nk-menu-link" data-original-title="" title="">
+                        <a href="{{route('profile.wallet')}}" class="nk-menu-link" data-original-title="" title="">
                             <span class="nk-menu-icon"><em class="icon ni ni-wallet"></em></span>
                             <span class="nk-menu-text">Wallet</span>
                         </a>
                     </li>
 
                     <li class="nk-menu-item">
-                        <a href="html/index-analytics.html" class="nk-menu-link" data-original-title="" title="">
+                        <a href="{{route('profile.edit')}}" class="nk-menu-link" data-original-title="" title="">
                             <span class="nk-menu-icon"><em class="icon ni ni-user-alt"></em></span>
                             <span class="nk-menu-text">Profile</span>
                         </a>
@@ -119,7 +128,7 @@
 
                     @if (auth()->user()->isVendor() || auth()->user()->isUser())
                         <li class="nk-menu-item">
-                            <a href="html/index-analytics.html" class="nk-menu-link" data-original-title="" title="">
+                            <a href="{{route('profile.referral')}}" class="nk-menu-link" data-original-title="" title="">
                                 <span class="nk-menu-icon"><em class="icon ni ni-users"></em></span>
                                 <span class="nk-menu-text">Referrals</span>
                             </a>

@@ -67,7 +67,6 @@ class VendorController extends Controller
         Alert::success('Vendor Account Created Successfully!');
 
         return back();
-
     }
 
     function coupons(Request $request) {
@@ -76,8 +75,6 @@ class VendorController extends Controller
                             ->where('status', Status::UNUSED)
                             ->with(['vendor'])
                             ->get();
-
-        // dd($coupons);
                             
         return view('vendors.vendor-coupons', [
             'coupons' => $coupons

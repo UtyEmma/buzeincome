@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('coupons', function (Blueprint $table) {
-            $table->id();
-            $table->string('unique_id');
-            $table->string('user_unique_id');
-            $table->string('coupon_code');
-            $table->string('status')->default('Not Used');
-            $table->number('amount')->default(5000);
+        Schema::create('task_completions', function (Blueprint $table) {
+            $table->uuid('id')->primary();
+            $table->string('user_id');
+            $table->string('task_id');
+            $table->string('verified_at')->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('coupons');
+        Schema::dropIfExists('task_completions');
     }
 };

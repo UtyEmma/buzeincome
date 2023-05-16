@@ -14,9 +14,8 @@ return new class extends Migration
         Schema::create('wallets', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('user_id');
-            $table->integer('total_bal')->default(0);
             $table->integer('main_bal')->default(0);
-            $table->integer('ref_bal')->default(0);
+            $table->integer('escrow_bal')->default(0);
             $table->timestamps();
         });
     }
