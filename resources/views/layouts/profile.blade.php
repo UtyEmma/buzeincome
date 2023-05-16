@@ -63,7 +63,6 @@
                                             <li><a class="active" href="{{route('profile.edit')}}"><em class="icon ni ni-user-c"></em><span>Personal Infomation</span></a></li>
                                             <li><a href="{{route('profile.wallet')}}"><em class="icon ni ni-wallet"></em><span>Wallet</span></a></li>
                                             <li><a href="{{route('profile.referral')}}"><em class="icon ni ni-users"></em><span>Referrals</span></a></li>
-                                            <li><a href="html/user-profile-setting.html"><em class="icon ni ni-lock-alt-fill"></em><span>Security Settings</span></a></li>
                                         </ul>
                                     </div><!-- .card-inner -->
                                 </div><!-- .card-inner-group -->
@@ -125,28 +124,28 @@
                                 <div class="row gy-4">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="form-label" for="facebook">Facebook Username</label>
+                                            <label class="form-label" for="facebook">Facebook Profile URL</label>
                                             <input type="text" class="form-control form-control-lg" name="facebook" id="facebook"  placeholder="Facebook">
                                             <x-input-error key="facebook" />
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="form-label" for="twitter">Twitter Username</label>
+                                            <label class="form-label" for="twitter">Twitter Profile URL</label>
                                             <input type="text" class="form-control form-control-lg" id="twitter" name="twitter" value="{{$user->twitter}}" placeholder="Twitter">
                                             <x-input-error key="twitter" />
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="form-label" for="instagram">Instagram Username</label>
+                                            <label class="form-label" for="instagram">Instagram Profile URL</label>
                                             <input type="text" class="form-control form-control-lg" id="instagram" name="instagram" value="{{$user->instagram}}" placeholder="Instagram">
                                             <x-input-error key="instagram" />
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="form-label" for="tiktok">Tiktok Username</label>
+                                            <label class="form-label" for="tiktok">Tiktok Profile URL</label>
                                             <input type="text" class="form-control form-control-lg" id="tiktok" value="{{$user->tiktok}}" name="tiktok" placeholder="Tiktok">
                                             <x-input-error key="tiktok" />
                                         </div>

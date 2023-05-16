@@ -77,10 +77,10 @@ class ProfileController extends Controller
             'email' => 'required|string',
             'phone' => 'required|numeric',
             'image' => 'nullable|image',
-            'facebook' => 'nullable|string',
-            'twitter' => 'nullable|string',
-            'instagram' => 'nullable|string',
-            'tiktok' => 'nullable|string',
+            'facebook' => 'nullable|string|url',
+            'twitter' => 'nullable|string|url',
+            'instagram' => 'nullable|string|url',
+            'tiktok' => 'nullable|string|url',
         ]);
 
         if($request->hasFile('image')){

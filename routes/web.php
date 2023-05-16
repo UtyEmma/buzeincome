@@ -31,10 +31,9 @@ Route::get('/', function () {
 
 Route::middleware('auth')->group(function () {
     Route::middleware('verified')->group(function(){
-        Route::get('/dashboard', function () {
-            return view('dashboard');
-        })->name('dashboard');
+        Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
     
+        Route::get('/profile/security', [ProfileController::class, 'security'])->name('profile.edit');
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
