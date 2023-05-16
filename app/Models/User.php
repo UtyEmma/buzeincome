@@ -100,7 +100,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     function users(){
-        return $this->hasManyThrough(Coupon::class, User::class, 'coupon_id', 'vendor_id', 'id', 'id' );
+        return $this->hasManyThrough(User::class, Coupon::class, 'vendor_id', 'coupon_id', 'id', 'id' );
     }
 
     function referrals() {

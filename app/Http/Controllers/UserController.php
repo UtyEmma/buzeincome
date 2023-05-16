@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Library\Roles;
 use App\Library\Status;
+use App\Models\Coupon;
 use App\Models\Task;
 use App\Models\TaskCompletion;
 use App\Models\User;
@@ -47,12 +48,36 @@ class UserController extends Controller {
 
         $tasks = Task::isActive()->isNotExpired()->with(['completion'])->get();
 
+        $coupons = $user->coupons()->count();
+        $couponUsers = $user->users()->count();
+        $availableCoupons = $user->coupons()->doesntHave('user')->count();
+
+        $users = User::isAUser()->count();
+        $vendors = User::isAVendor()->count();
+        $allCoupons = Coupon::count();
+
+        $activeCoupons = Coupon::doesntHave('user')->count();
+
+        $allTasks = Task::count();
+        $allTaskCompletions = TaskCompletion::count();
+
+        // $sales = $user->coupons()->has('user')->sum('amount');
+
         return view('dashboard', [
             'user' => $user,
             'msg' => $msg,
             'taskCompletions' => $tasksCompleted,
             'tasks' => $tasks,
-            'referrals' => $referrals
+            'referrals' => $referrals,
+            'coupons' => $coupons,
+            'couponUsers' => $couponUsers,
+            'availableCoupons' => $availableCoupons,
+            'users' => $users,
+            'vendors' => $vendors,
+            'allCoupons' => $allCoupons,
+            'activeCoupons' => $activeCoupons,
+            'allTasks' => $allTasks,
+            'allTaskCompletions' => $allTaskCompletions
         ]);
     }
 

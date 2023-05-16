@@ -1,4 +1,5 @@
 <x-dashboard-layout>
+    
     <div class="container-fluid">
         <div class="nk-content-inner">
             <div class="nk-content-body">
@@ -33,58 +34,238 @@
                 </div><!-- .nk-block-head -->
                 <div class="nk-block">
                     <div class="row g-gs">
-                        <div class="col-xxl-3 col-sm-6">
-                            <div class="card">
-                                <div class="nk-ecwg nk-ecwg6">
-                                    <div class="card-inner">
-                                        <div class="card-title-group">
-                                            <div class="card-title">
-                                                <h6 class="title">Tasks Completed</h6>
-                                            </div>
-                                        </div>
-                                        <div class="data">
-                                            <div class="data-group">
-                                                <div class="amount">{{$taskCompletions}}</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="col-xxl-3 col-sm-6">
-                            <div class="card">
-                                <div class="nk-ecwg nk-ecwg6">
-                                    <div class="card-inner">
-                                        <div class="card-title-group">
-                                            <div class="card-title">
-                                                <h6 class="title">Referrals</h6>
+                        @if ($user->isUser($user))
+                            <div class="col-xxl-3 col-sm-6">
+                                <div class="card">
+                                    <div class="nk-ecwg nk-ecwg6">
+                                        <div class="card-inner">
+                                            <div class="card-title-group">
+                                                <div class="card-title">
+                                                    <h6 class="title">Tasks Completed</h6>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="data">
-                                            <div class="data-group">
-                                                <div class="amount">{{$referrals}}</div>
+                                            <div class="data">
+                                                <div class="data-group">
+                                                    <div class="amount">{{$taskCompletions}}</div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+
+                            <div class="col-xxl-3 col-sm-6">
+                                <div class="card">
+                                    <div class="nk-ecwg nk-ecwg6">
+                                        <div class="card-inner">
+                                            <div class="card-title-group">
+                                                <div class="card-title">
+                                                    <h6 class="title">Referrals</h6>
+                                                </div>
+                                            </div>
+                                            <div class="data">
+                                                <div class="data-group">
+                                                    <div class="amount">{{$referrals}}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+
+                        @if ($user->isVendor($user))
+                            <div class="col-xxl-3 col-sm-6">
+                                <div class="card">
+                                    <div class="nk-ecwg nk-ecwg6">
+                                        <div class="card-inner">
+                                            <div class="card-title-group">
+                                                <div class="card-title">
+                                                    <h6 class="title">Total Coupons</h6>
+                                                </div>
+                                            </div>
+                                            <div class="data">
+                                                <div class="data-group">
+                                                    <div class="amount">{{$coupons}}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xxl-3 col-sm-6">
+                                <div class="card">
+                                    <div class="nk-ecwg nk-ecwg6">
+                                        <div class="card-inner">
+                                            <div class="card-title-group">
+                                                <div class="card-title">
+                                                    <h6 class="title">Available Coupons</h6>
+                                                </div>
+                                            </div>
+                                            <div class="data">
+                                                <div class="data-group">
+                                                    <div class="amount">{{$availableCoupons}}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xxl-3 col-sm-6">
+                                <div class="card">
+                                    <div class="nk-ecwg nk-ecwg6">
+                                        <div class="card-inner">
+                                            <div class="card-title-group">
+                                                <div class="card-title">
+                                                    <h6 class="title">Used Coupons</h6>
+                                                </div>
+                                            </div>
+                                            <div class="data">
+                                                <div class="data-group">
+                                                    <div class="amount">{{$couponUsers}}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+
+                        @if ($user->isAnyAdmin($user))
+                            <div class="col-xxl-3 col-sm-6">
+                                <div class="card">
+                                    <div class="nk-ecwg nk-ecwg6">
+                                        <div class="card-inner">
+                                            <div class="card-title-group">
+                                                <div class="card-title">
+                                                    <h6 class="title">Total Users</h6>
+                                                </div>
+                                            </div>
+                                            <div class="data">
+                                                <div class="data-group">
+                                                    <div class="amount">{{$users}}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xxl-3 col-sm-6">
+                                <div class="card">
+                                    <div class="nk-ecwg nk-ecwg6">
+                                        <div class="card-inner">
+                                            <div class="card-title-group">
+                                                <div class="card-title">
+                                                    <h6 class="title">Total Vendors</h6>
+                                                </div>
+                                            </div>
+                                            <div class="data">
+                                                <div class="data-group">
+                                                    <div class="amount">{{$vendors}}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xxl-3 col-sm-6">
+                                <div class="card">
+                                    <div class="nk-ecwg nk-ecwg6">
+                                        <div class="card-inner">
+                                            <div class="card-title-group">
+                                                <div class="card-title">
+                                                    <h6 class="title">Total Coupons</h6>
+                                                </div>
+                                            </div>
+                                            <div class="data">
+                                                <div class="data-group">
+                                                    <div class="amount">{{$allCoupons}}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xxl-3 col-sm-6">
+                                <div class="card">
+                                    <div class="nk-ecwg nk-ecwg6">
+                                        <div class="card-inner">
+                                            <div class="card-title-group">
+                                                <div class="card-title">
+                                                    <h6 class="title">Active Coupons</h6>
+                                                </div>
+                                            </div>
+                                            <div class="data">
+                                                <div class="data-group">
+                                                    <div class="amount">{{$activeCoupons}}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xxl-3 col-sm-6">
+                                <div class="card">
+                                    <div class="nk-ecwg nk-ecwg6">
+                                        <div class="card-inner">
+                                            <div class="card-title-group">
+                                                <div class="card-title">
+                                                    <h6 class="title">Total Tasks</h6>
+                                                </div>
+                                            </div>
+                                            <div class="data">
+                                                <div class="data-group">
+                                                    <div class="amount">{{$allTasks}}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xxl-3 col-sm-6">
+                                <div class="card">
+                                    <div class="nk-ecwg nk-ecwg6">
+                                        <div class="card-inner">
+                                            <div class="card-title-group">
+                                                <div class="card-title">
+                                                    <h6 class="title">Tasks Completions</h6>
+                                                </div>
+                                            </div>
+                                            <div class="data">
+                                                <div class="data-group">
+                                                    <div class="amount">{{$allTaskCompletions}}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
                         
 
-                        <div class="col-12">
-                            <h4>Pending Tasks for Today</h4>
+                        @if ($user->isUser($user))
+                            <div class="col-12">
+                                <h4>Pending Tasks for Today</h4>
 
-                            <div class="row g-gs">
-                                @forelse ($tasks as $task)
-                                    <div class="col-sm-6 col-lg-4">
-                                        <x-tasks.user-task-item :task="$task" />
-                                    </div>
-                                @empty
-                                    
-                                @endforelse
+                                <div class="row g-gs">
+                                    @forelse ($tasks as $task)
+                                        <div class="col-sm-6 col-lg-4">
+                                            <x-tasks.user-task-item :task="$task" />
+                                        </div>
+                                    @empty
+                                        
+                                    @endforelse
+                                </div>
                             </div>
-                        </div>
+                        @endif
                     </div><!-- .row -->
                 </div><!-- .nk-block -->
             </div>
