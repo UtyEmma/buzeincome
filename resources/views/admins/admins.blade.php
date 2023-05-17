@@ -54,19 +54,15 @@
                     </div><!-- .nk-block-between -->
                 </div><!-- .nk-block-head -->
                 <div class="nk-block">
-                    <div class="nk-tb-list is-separate is-medium mb-3">
-                        <div class="nk-tb-item nk-tb-head">
-                            <div class="nk-tb-col nk-tb-col-check">
-                                <div class="custom-control custom-control-sm custom-checkbox notext">
-                                    <input type="checkbox" class="custom-control-input" id="uid">
-                                    <label class="custom-control-label" for="uid"></label>
-                                </div>
-                            </div>
-                            <div class="nk-tb-col tb-col-lg"><span>Name</span></div>
-                            <div class="nk-tb-col tb-col-md"><span>Email Address</span></div>
-                            <div class="nk-tb-col"><span class="d-none d-mb-block">Status</span></div>
-                            <div class="nk-tb-col nk-tb-col-tools"></div>
-                        </div>
+                    <table class="table-responsvive">
+                        <thead>
+                            <tr>
+                                <th class=""><span>Name</span></th>
+                                <th class=""><span>Email Address</span></th>
+                                <th class=""><span class="d-none d-mb-block">Status</span></th>
+                                <th class=""></th>
+                            </tr>
+                        </thead>
 
                         @forelse ($admins as $admin)
                             <x-admin.admin-item :admin="$admin" />
@@ -77,7 +73,7 @@
                                 </div>
                             </div>
                         @endforelse
-                    </div>
+                    </table>
 
 
                     <div class="card">

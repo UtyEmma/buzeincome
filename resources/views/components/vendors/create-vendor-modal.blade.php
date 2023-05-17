@@ -15,7 +15,7 @@
                 <div class="modal-header">
                     <h5 class="modal-title">Create a New Vendor</h5>
                 </div>
-                <form action="{{route('vendors.store')}}" method="post">
+                <form action="{{route('vendors.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
                         <div class="form-group row">
@@ -40,6 +40,12 @@
                                 <input name="lastname" id="lastname" placeholder="Last Name" class="form-control form-control-lg" />
                                 <x-input-error key="lastname" />
                             </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="image" class="form-label">Vendor Image</label>
+                            <input type="file" id="image" name="image" class="form-control form-control-lg">
+                            <x-input-error key="image" />
                         </div>
 
                         <div class="form-group">
