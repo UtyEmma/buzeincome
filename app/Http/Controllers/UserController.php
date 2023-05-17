@@ -11,6 +11,7 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Date;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class UserController extends Controller {
     
@@ -23,11 +24,20 @@ class UserController extends Controller {
             $query->where('name', 'LIKE', "%$keyword%")->orWhere('email', 'LIKE', "%$keyword%");
         });
 
-        $users = $query->isAUser()->get();
+        $users = $query->isAUser()->withCount(['taskCompletions'])->paginate();
 
         return view('users', [
             'users' => $users
         ]);
+    }
+
+    function destroy(User $user) {
+        $user->withdrawals()->delete();
+        $user->bankAccount()->delete();
+        $user->delete();
+        // Send Account deleted Notification
+        Alert::success('User Account deleted successfully!');
+        return back();
     }
 
     function dashboard(Request $request){

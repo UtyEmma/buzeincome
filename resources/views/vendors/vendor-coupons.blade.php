@@ -2,7 +2,7 @@
     <div class="mb-4 d-flex justify-content-between">
         <h3 class="nk-block-title page-title">Active Coupons</h3>
 
-        <button class="btn btn-primary">Coupon History</button>
+        <a href="{{route('coupons.vendor-coupon-history')}}" class="btn btn-primary">Coupon History</a>
     </div>
 
     <div class="row g-3">
@@ -22,9 +22,9 @@
                             <button onclick="navigator.clipboard.writeText('{{$coupon->code}}')" class="btn mr-2 btn-sm btn-light btn-icon btn-clipboard">
                                 <em class="icon ni ni-copy" ></em>
                             </button>
-                            <button onclick="window.navigator.share('{{$coupon->code}}')" class="btn btn-sm btn-light btn-icon btn-clipboard">
+                            <!-- <button onclick="window.navigator.share('{{$coupon->code}}')" class="btn btn-sm btn-light btn-icon btn-clipboard">
                                 <em class="icon ni ni-share" ></em>
-                            </button>
+                            </button> -->
                         </div>
                     </div>
                 </div>

@@ -1,7 +1,7 @@
 @inject('status', 'App\Library\Status')
 
 <x-dashboard-layout>
-<div class="container-fluid">
+    <div class="container-fluid">
         <div class="nk-content-inner">
             <div class="nk-content-body">
                 <div class="nk-block-head nk-block-head-sm">

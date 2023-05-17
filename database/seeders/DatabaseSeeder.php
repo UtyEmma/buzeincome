@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        if(!User::where('role', Roles::ADMIN)->exists()){
+        if(!User::where('role', Roles::SUPERADMIN)->exists()){
             User::create([
                 'firstname' => 'Super',
                 'lastname' => 'Admin',

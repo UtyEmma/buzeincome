@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Services\CouponService;
+use App\Library\FileHandler;
 use App\Library\Roles;
 use App\Library\Status;
 use App\Models\User;
@@ -46,15 +47,19 @@ class VendorController extends Controller
             'lastname' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
             'phone' => ['required', 'numeric'],
+            'image' => ['required', 'image'],
             'status' => ['required', "in:".Status::ACTIVE.','.Status::BANNED.','.Status::SUSPENDED]
         ]);
 
         // $password = Str::password();
         $password = "1234567890";
 
+        $image = FileHandler::upload($request->file('image'));
+
         $user = User::create(collect($validated)->merge([
             'password' => Hash::make($password),
             'role' => Roles::VENDOR,
+            'image' => $image
         ])->toArray());
 
         $user->email_verified_at = now();
@@ -96,6 +101,18 @@ class VendorController extends Controller
         return view('vendors.vendor-coupon-history', [
             'coupons' => $coupons
         ]);
+    }
+
+    function assignCoupon(Request $request, User $user, CouponService $couponService){
+        $request->validate([
+            'coupons' => 'required|numeric|min:1'
+        ]);
+
+        $couponService->createCoupons($user, $request->coupons);
+
+        Alert::success("$request->coupons coupons assigned to vendor!");
+
+        return back();
     }
 
     function destroy(Request $request, User $user){
