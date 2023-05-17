@@ -1,7 +1,7 @@
 @inject('status', 'App\Library\Status')
 
 <li class="nk-block-tools-opt">
-    <a href="#" class="btn btn-primary d-inline-flex" data-toggle="modal" data-target="#add-new-vendor"><em class="icon ni ni-plus"></em><span>Add Vendor</span></a>
+    <a href="#" class="btn btn-primary d-inline-flex" data-toggle="modal" data-target="#add-new-vendor"><em class="icon ni ni-plus"></em><span>Create Vendor</span></a>
 </li>
 
 
@@ -13,7 +13,7 @@
                     <em class="icon ni ni-cross"></em>
                 </a>
                 <div class="modal-header">
-                    <h5 class="modal-title">Add New Vendor</h5>
+                    <h5 class="modal-title">Create a New Vendor</h5>
                 </div>
                 <form action="{{route('vendors.store')}}" method="post">
                     @csrf

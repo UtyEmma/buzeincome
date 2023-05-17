@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 class CouponController extends Controller
 {
 
-    public function index()
+    public function verifyCoupon()
     {
-        //
+        return view('coupon.verify-coupon');
     }
 
     function list(Request $request){
@@ -44,5 +44,10 @@ class CouponController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function contact_us()
+    {
+        return view('contact');
     }
 }

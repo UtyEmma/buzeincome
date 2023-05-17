@@ -6,6 +6,8 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use App\Library\Roles;
+use App\Models\AppSettings;
+use App\Models\Bank;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -22,9 +24,22 @@ class DatabaseSeeder extends Seeder
                 'lastname' => 'Admin',
                 'email' => 'admin@localhost.com',
                 'password' => Hash::make('1234567890'),
-                'role' => Roles::ADMIN,
+                'role' => Roles::SUPERADMIN,
                 'email_verified_at' => now()
             ]);
+        }
+
+        if(!AppSettings::first()){
+            AppSettings::create([
+                'refferal_comission' => env('DEFAULT_REFERRAL_COMISSION'),
+                'second_level_refferal_comission' => env('DEFAULT_SECOND_LEVEL_REFERRAL_COMISSION'),
+                'default_user_bal' => env('DEFAULT_BALANCE')
+            ]);
+        }
+
+        if(Bank::all()->isEmpty()){  
+            $banks = Bank::retrieve();     
+            Bank::insert($banks);
         }
     }
 }

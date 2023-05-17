@@ -14,7 +14,6 @@
         <link rel="stylesheet" href="{{asset('assets/css/dashlite.css?ver=2.2.0')}}">
         <link id="skin-default" rel="stylesheet" href="{{asset('assets/css/theme.css?ver=2.2.0')}}">
 
-        <script  src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
         @stack('styles')
     </head>
@@ -32,6 +31,7 @@
 
         <script src="{{asset('assets/js/bundle.js?ver=2.2.0')}}"></script>
         <script src="{{asset('assets/js/scripts.js?ver=2.2.0')}}"></script>
+        <script src="{{asset('assets/js/alpine.min.js')}}"></script>
         <script src="{{asset('assets/js/charts/chart-ecommerce.js?ver=2.2.0')}}"></script>
 
         @stack('scripts')

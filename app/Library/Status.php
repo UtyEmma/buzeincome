@@ -11,4 +11,15 @@ class Status {
     const USED = 'USED';
     const UNUSED = 'UNUSED';
 
+    const EXPIRED = 'EXPIRED';
+
+    const UNVERIFIED = 'UNVERIFIED';
+    const VERIFIED = 'VERIFIED';
+
+    // Withdrawals
+    const NEW = 'NEW';
+    const DENIED = 'DENIED';
+    const COMPLETED = 'COMPLETED';
+
+
 }
