@@ -1,7 +1,7 @@
 <div class="nk-sidebar nk-sidebar-fixed is-light " data-content="sidebarMenu">
     <div class="nk-sidebar-element nk-sidebar-head">
         <div class="nk-sidebar-brand">
-            <a href="html/index.html" class="logo-link nk-sidebar-logo">
+            <a href="{{route('dashboard')}}" class="logo-link nk-sidebar-logo">
                 <img class="logo-light logo-img" src="./images/logo.png" srcset="./images/logo2x.png 2x" alt="logo">
                 <img class="logo-dark logo-img" src="./images/logo-dark.png" srcset="./images/logo-dark2x.png 2x" alt="logo-dark">
                 <img class="logo-small logo-img logo-img-small" src="./images/logo-small.png" srcset="./images/logo-small2x.png 2x" alt="logo-small">
@@ -98,10 +98,6 @@
                             <a href="{{route('coupons.vendor-coupon-history')}}" class="nk-menu-link" data-original-title="" title="">
                                 <span class="nk-menu-icon"><em class="icon ni ni-histroy"></em></span>
                                 <span class="nk-menu-text">Coupon History</span>
-                            </a>
-                            <a href="html/index-sales.html" class="nk-menu-link" data-original-title="" title="">
-                                <span class="nk-menu-icon"><em class="icon ni ni-sign-dollar"></em></span>
-                                <span class="nk-menu-text">Earnings</span>
                             </a>
                         </li>
                     @endif

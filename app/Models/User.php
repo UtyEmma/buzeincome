@@ -83,6 +83,10 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasOne(Wallet::class, 'user_id');
     }
 
+    function taskCompletions(){
+        return $this->hasMany(TaskCompletion::class, 'user_id');
+    }
+
     function coupons(){
         return $this->hasMany(Coupon::class, 'vendor_id');
     }
@@ -96,7 +100,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     function users(){
-        return $this->hasManyThrough(Coupon::class, User::class, 'coupon_id', 'vendor_id', 'id', 'id' );
+        return $this->hasManyThrough(User::class, Coupon::class, 'vendor_id', 'coupon_id', 'id', 'id' );
     }
 
     function referrals() {
