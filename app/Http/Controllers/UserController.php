@@ -31,6 +31,15 @@ class UserController extends Controller {
         ]);
     }
 
+    function single(User $user){
+        $user->loadCount('taskCompletions');
+        $user->loadSum('referrals', 'amount');
+
+        return view('users.user-details', [
+            'user' => $user
+        ]);
+    }
+
     function destroy(User $user) {
         $user->withdrawals()->delete();
         $user->bankAccount()->delete();
@@ -88,6 +97,22 @@ class UserController extends Controller {
             'activeCoupons' => $activeCoupons,
             'allTasks' => $allTasks,
             'allTaskCompletions' => $allTaskCompletions
+        ]);
+    }
+
+    function withdrawals(User $user){
+        $user->withdrawals;
+
+        return view('users.user-withdrawal', [
+            'user' => $user
+        ]);
+    }
+
+    function completions(User $user){
+        $user->taskCompletions;
+
+        return view('users.user-completions', [
+            'user' => $user
         ]);
     }
 

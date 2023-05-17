@@ -83,20 +83,13 @@
                                     </tbody>
                                 </table>
                             </div>
+
+                            <div>
+                                {{$tasks->links()}}
+                            </div>
                         </div>
                     </div>
-
-
-                    <div class="card">
-                        <div class="card-inner">
-                            <div class="nk-block-between-md g-3">
-                                <div class="g">
-                                    {{$tasks->links()}}
-                                </div>
-                            </div><!-- .nk-block-between -->
-                        </div>
-                    </div>
-                </div><!-- .nk-block -->
+                </div>
             </div>
         </div>
     </div>

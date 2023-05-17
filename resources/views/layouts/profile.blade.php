@@ -87,6 +87,13 @@
                             <div class="mb-3">
                                 <p class="mb-2 fs-16px">Personal Information</p>
                                 <div class="row gy-4">
+                                    <div class="col-md-7">
+                                        <div class="form-group">
+                                            <label class="form-label" for="image">Profile Image</label>
+                                            <input type="file" class="form-control form-control-lg" id="image" name="image" >
+                                            <x-input-error key="image" />
+                                        </div>
+                                    </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="form-label" for="firstname">First Name</label>
