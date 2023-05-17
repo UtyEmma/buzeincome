@@ -33,11 +33,12 @@
       <div class="col-sm-6 col-lg-4">
         <div class="team-member">
           <div class="thumb">
-            <img src="assets/img/team/01.jpg" alt="Boseo-HasTech">
+            <img src="assets/img/team/{{$vendor->image}}" alt="Boseo-HasTech">
           </div>
           <div class="content">
             <div class="member-info">
-              <h4 class="name"><a href="#/">{{$vendor->firstname}} {{$vendor->lastname}}</a></h4>
+              <h4 class="name"><a href="https://wa.me/{{$vendor->phone}}">{{$vendor->firstname}} {{$vendor->lastname}}</a></h4>
+              <!-- <h4 class="name"><a href="#/"> {{$vendor->phone}}</a></h4> -->
               <p class="designation">Lead Analyst</p>
             </div>
           </div>

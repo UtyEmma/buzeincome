@@ -46,7 +46,7 @@
                                             </div>
                                         </li>
 
-                                        <x-tasks.create-task-modal />
+                                        
                                     </ul>
                                 </div>
                             </div>
