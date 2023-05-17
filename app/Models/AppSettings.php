@@ -9,7 +9,7 @@ class AppSettings extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['refferal_comission', 'default_user_bal'];
+    protected $fillable = ['refferal_comission', 'default_user_bal', 'limit', 'ref_limit'];
 
 
 }

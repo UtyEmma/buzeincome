@@ -54,9 +54,35 @@
                                             <x-input-error key="default_user_bal" />
                                         </div>
                                     </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="" class="form-label">Withdrawal Threshold</label>
+                                            <div class="form-control-wrap">
+                                                <div class="form-icon form-icon-left">
+                                                    <em class="icon ni ni-sign-dollar"></em>
+                                                </div>
+                                                <input type="text" name="limit" value="{{$settings->limit}}" class="form-control form-control-lg" />
+                                            </div>
+                                            <x-input-error key="limit" />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="" class="form-label">Referral Withdrawal Threshold</label>
+                                            <div class="form-control-wrap">
+                                                <div class="form-icon form-icon-left">
+                                                    <em class="icon ni ni-sign-dollar"></em>
+                                                </div>
+                                                <input type="text" name="ref_limit" value="{{$settings->ref_limit}}" class="form-control form-control-lg" />
+                                            </div>
+                                            <x-input-error key="ref_limit" />
+                                        </div>
+                                    </div>
                                 </div>
 
-                                <div class="d-flex justify-content-end">
+                                <div class="d-flex justify-content-end mt-4">
                                     <button class="btn btn-primary btn-lg">Update Settings</button>
                                 </div>
                             </form>
