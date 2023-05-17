@@ -57,10 +57,12 @@ class AppSettingsController extends Controller
      */
     public function update(Request $request)
     {
-        $validated = $request->validate([
+        $request->validate([
             'refferal_comission' => 'required|numeric',
             'second_level_refferal_comission' => 'required|numeric',
             'default_user_bal' => 'required|numeric',
+            'limit' => 'required|numeric',
+            'ref_limit' => 'required|numeric'
         ]);
 
         $settings = AppSettings::first();
@@ -68,6 +70,8 @@ class AppSettingsController extends Controller
         $settings->refferal_comission = $request->refferal_comission;
         $settings->second_level_refferal_comission = $request->second_level_refferal_comission;
         $settings->default_user_bal = $request->default_user_bal;
+        $settings->limit = $request->limit;
+        $settings->ref_limit = $request->ref_limit;
         $settings->save();
 
         Alert::success('App Settings Updated Successfully!');
