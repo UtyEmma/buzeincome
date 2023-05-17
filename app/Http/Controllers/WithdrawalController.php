@@ -15,18 +15,18 @@ class WithdrawalController extends Controller {
         $user = $request->user();
 
         $request->validate([
+            'type' => 'required|in:main_bal,ref_bal',
             'amount' => ['required', 'numeric', 'min:1']
         ]);
 
         $wallet = $user->wallet;
 
-        if($wallet->main_bal < $request->amount) {
+        if($wallet[$request->type] < $request->amount) {
             Alert::error('Insufficient Funds!');
-
+        
             return back()->withErrors([
                 'amount' => 'Insufficient funds!'
             ]);
-    
         }
 
         $reference = Token::random('withdrawals', 'reference');
@@ -35,10 +35,11 @@ class WithdrawalController extends Controller {
             'amount' => $request->amount,
             'wallet_id' => $wallet->id,
             'user_id' => $user->id,
-            'reference' => $reference
+            'reference' => $reference,
+            'type' => $request->type
         ]);
 
-        $wallet->main_bal -= $request->amount;
+        $wallet[$request->type] -= $request->amount;
         $wallet->escrow_bal += $request->amount;
         $wallet->save();
 
@@ -69,7 +70,7 @@ class WithdrawalController extends Controller {
         $wallet = $withdrawal->user->wallet;
 
         if($status === Status::DENIED){
-            $wallet->main_bal += $withdrawal->amount;
+            $wallet[$withdrawal->type] += $withdrawal->amount;
         }
 
         $wallet->escrow_bal -= $withdrawal->amount;

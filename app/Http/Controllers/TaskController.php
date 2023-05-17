@@ -15,7 +15,7 @@ class TaskController extends Controller
      */
     public function index() {
         $tasks = Task::isActive()->isNotExpired()->with(['completion'])->get();
-
+        
         return view('tasks.user-tasks', [
             'tasks' => $tasks
         ]);
@@ -74,10 +74,12 @@ class TaskController extends Controller
      * Display the specified resource.
      */
     public function show(Task $task) {
-        $details = $task->with(['completions.user'])->first();
-        
+
+        $details = $task->completions()->with(['user'])->paginate();
+
         return view('tasks.task-details', [
-            'task' => $details
+            'task' => $task,
+            'completions' => $details
         ]);
     }
 

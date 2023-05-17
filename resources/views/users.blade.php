@@ -64,12 +64,13 @@
                                         <tr>
                                             <!-- <th scope="row">1</th> -->
                                             <td>
-                                                {{$user->firstname}} {{$user->lastname}} 
+                                                <a class="link" href="{{route('users.single', [
+                                                    'user' => $user->id])}}">{{$user->firstname}} {{$user->lastname}}</a> 
                                                 <br>
-                                                <a href="{{$user->twitter}}"><em class="icon ni ni-twitter"></em></a>
-                                                <a href="{{$user->facebook}}"><em class="icon ni ni-facebook-alt"></em></a>
-                                                <a href="{{$user->instagram}}"><em class="icon ni ni-instagram"></em></a>
-                                                <a href="{{$user->tiktok}}"><em class="icon ni ni-tiktok"></em></a>
+                                                <a href="{{$user->twitter}}"><em class="icon fs-22px ni ni-twitter"></em></a>
+                                                <a href="{{$user->facebook}}"><em class="icon fs-22px ni ni-facebook-f"></em></a>
+                                                <a href="{{$user->instagram}}"><em class="icon fs-22px ni ni-instagram"></em></a>
+                                                <a href="{{$user->tiktok}}"><em class="icon fs-22px ni ni-tiktok"></em></a>
                                             </td>
                                             <td>{{$user->email}} <br /> {{$user->phone}} </td>
                                             <td>{{number_format($user->task_completions_count)}}</td>

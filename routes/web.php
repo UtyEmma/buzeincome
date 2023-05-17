@@ -52,6 +52,9 @@ Route::middleware('auth')->group(function () {
                 Route::get('/', [UserController::class, 'list'])->name('users.list');
 
                 Route::prefix('{user}')->group(function(){
+                    Route::get('/', [UserController::class, 'single'])->name('users.single');
+                    Route::get('/withdrawals', [UserController::class, 'withdrawals'])->name('users.withdrawals');
+                    Route::get('/completions', [UserController::class, 'completions'])->name('users.completions');
                     Route::get('delete', [UserController::class, 'destroy'])->name('users.delete');
                 });
             });
@@ -84,6 +87,7 @@ Route::middleware('auth')->group(function () {
 
                     Route::prefix('{taskCompletion}')->group(function(){
                         Route::get('/approve', [TaskCompletionController::class, 'verify'])->name('tasks.verify');
+                        Route::get('/delete', [TaskCompletionController::class, 'destroy'])->name('tasks.completion.delete');
                     });
                     Route::post('/update', [TaskController::class, 'update'])->name('tasks.update');
                     Route::get('/delete', [TaskController::class, 'destroy'])->name('tasks.destroy');

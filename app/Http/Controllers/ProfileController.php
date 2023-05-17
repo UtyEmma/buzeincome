@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use Propaganistas\LaravelPhone\Rules\Phone;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class ProfileController extends Controller
@@ -50,11 +51,12 @@ class ProfileController extends Controller
     }
 
     public function wallet(Request $request) {
-        $user = $request->user()->load(['withdrawals']);
-
+        $user = $request->user();
+        $withdrawals = $user->withdrawals()->paginate();
         
         return view('profile.wallet', [
-            'user' => $user
+            'user' => $user,
+            'withdrawals' => $withdrawals
         ]);
     }
 
