@@ -42,12 +42,18 @@ class TaskCompletionController extends Controller
         $wallet->main_bal += $task->reward;
         $wallet->save();
 
-
         Alert::success('Task Completion has been verified Successfully!');
 
         return back()->with([
             'success' => "Task Completion has been verified Successfully!"
         ]);
+    }
+
+    function destroy(Task $task, TaskCompletion $taskCompletion) {
+        $taskCompletion->delete();
+        
+        Alert::success("Deleted Successfully!");
+        return back();
     }
 
     

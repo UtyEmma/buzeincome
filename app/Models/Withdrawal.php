@@ -11,7 +11,7 @@ class Withdrawal extends Model
 {
     use HasFactory, HasUuids;
 
-    protected $fillable = ['wallet_id', 'user_id', 'amount', 'status', 'reference'];
+    protected $fillable = ['wallet_id', 'user_id', 'amount', 'status', 'reference', 'type'];
 
     protected $attributes = [
         'status' => Status::NEW

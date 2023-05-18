@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Library\Status;
 use App\Library\Token;
+use App\Models\AppSettings;
 use App\Models\Withdrawal;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -14,19 +15,35 @@ class WithdrawalController extends Controller {
     function store(Request $request) {
         $user = $request->user();
 
-        $request->validate([
-            'amount' => ['required', 'numeric', 'min:1']
-        ]);
+        $settings = AppSettings::first();
 
         $wallet = $user->wallet;
 
-        if($wallet->main_bal < $request->amount) {
-            Alert::error('Insufficient Funds!');
+        $request->validate([    
+            'type' => 'required|in:main_bal,ref_bal',
+            'amount' => ['required', 'numeric']
+        ]);
 
+        if($request->type === 'main_bal') {
+            if($wallet->main_bal < $settings->limit) {
+                Alert::error("Main balance must be up to $$settings->limit to withdraw!");
+                return back();
+            } 
+        }
+
+        if($request->type === 'ref_bal') {
+            if($wallet->ref_bal < $settings->ref_limit) {
+                Alert::error("Referral balance must be up to $$settings->ref_limit to withdraw!");
+                return back();
+            }
+        }
+
+        if($wallet[$request->type] < $request->amount) {
+            Alert::error('Insufficient Funds!');
+        
             return back()->withErrors([
                 'amount' => 'Insufficient funds!'
             ]);
-    
         }
 
         $reference = Token::random('withdrawals', 'reference');
@@ -35,10 +52,11 @@ class WithdrawalController extends Controller {
             'amount' => $request->amount,
             'wallet_id' => $wallet->id,
             'user_id' => $user->id,
-            'reference' => $reference
+            'reference' => $reference,
+            'type' => $request->type
         ]);
 
-        $wallet->main_bal -= $request->amount;
+        $wallet[$request->type] -= $request->amount;
         $wallet->escrow_bal += $request->amount;
         $wallet->save();
 
@@ -69,7 +87,7 @@ class WithdrawalController extends Controller {
         $wallet = $withdrawal->user->wallet;
 
         if($status === Status::DENIED){
-            $wallet->main_bal += $withdrawal->amount;
+            $wallet[$withdrawal->type] += $withdrawal->amount;
         }
 
         $wallet->escrow_bal -= $withdrawal->amount;

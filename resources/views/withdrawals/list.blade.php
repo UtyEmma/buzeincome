@@ -70,7 +70,13 @@
                                             <td>{{$withdrawal->reference}}</td>
                                             <td>{{$withdrawal->user->firstname}} {{$withdrawal->user->lastname}} </td>
                                             <td>$ {{number_format($withdrawal->amount)}}</td>
-                                            <td>{{$withdrawal->user->bankAccount->bankInfo->name}} - {{$withdrawal->user->bankAccount->account_number}} <span class="ml-1" role="button" onclick="window.navigator.clipboard.writeText('{{$withdrawal->user->bankAccount->account_number}}')"><em class="ni ni-copy"></em></span> <br /> {{$withdrawal->user->bankAccount->account_name}}</td>
+                                            <td>
+                                                @if ($withdrawal->user->bankAccount)
+                                                {{$withdrawal->user->bankAccount->bankInfo->name}} - {{$withdrawal->user->bankAccount->account_number}} <span class="ml-1" role="button" onclick="window.navigator.clipboard.writeText('{{$withdrawal->user->bankAccount->account_number}}')"><em class="ni ni-copy"></em></span> <br /> {{$withdrawal->user->bankAccount->account_name}}
+                                                @else
+                                                    <p>Not Yet Set</p>
+                                                @endif
+                                            </td>
                                             <td>{{$withdrawal->status}}</td>
                                             <td>
                                                 @if ($withdrawal->status === $status::NEW)
@@ -109,18 +115,13 @@
                                 </tbody>
                             </table>
                         </div>
+
+                        <div>
+                            {{$withdrawals->links()}}
+                        </div>
                     </div>
                 </div>
 
-                <div class="card">
-                    <div class="card-inner">
-                        <div class="nk-block-between-md g-3">
-                            <div class="g">
-                                {{$withdrawals->links()}}
-                            </div>
-                        </div><!-- .nk-block-between -->
-                    </div>
-                </div>
             </div>
         </div>
     </div>
