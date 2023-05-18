@@ -11,7 +11,7 @@
     <title>{{config('global.sitename')}}</title>
 
     <!--== Favicon ==-->
-    <link rel="shortcut icon" href=" {{ asset('assets/img/favicon.ico') }}" type="image/x-icon" />
+    <link rel="shortcut icon" href="./images/fav-icon.png" type="image/x-icon" />
 
     <!--== Google Fonts ==-->
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,600,700,800" rel="stylesheet">

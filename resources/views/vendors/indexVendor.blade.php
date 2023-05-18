@@ -39,7 +39,7 @@
             <div class="member-info">
               <h4 class="name"><a href="https://wa.me/{{$vendor->phone}}">{{$vendor->firstname}} {{$vendor->lastname}}</a></h4>
               <!-- <h4 class="name"><a href="#/"> {{$vendor->phone}}</a></h4> -->
-              <p class="designation">Lead Analyst</p>
+              <p class="designation">Lead Vendor</p>
             </div>
           </div>
           <!-- <a class="icon team-btn-active" href="#/">
