@@ -47,7 +47,7 @@ class RegisteredUserController extends Controller {
             'password' => Hash::make($request->password),
             'role' => Roles::USER,
             'coupon_id' => $coupon->id,
-            'referral_id' => Token::text(8, 'users', 'referral_id')
+            'referral_id' => strtoupper(Token::text(8, 'users', 'referral_id')),
         ])->toArray());
 
         $coupon->status = Status::USED;
@@ -55,7 +55,15 @@ class RegisteredUserController extends Controller {
         $coupon->used_at = $user->created_at;
         $coupon->save();
 
-        if($request->filled('referral_code')) $referralService->handleReferralPayout($user);
+        if($request->filled('referral_code')) {
+            $referrer = User::where('referral_id', $request->referral_code)->first();
+            $user->referrer_id = $referrer->id;
+            $user->save();
+
+            $user->refresh();
+
+            $referralService->handleReferralPayout($user);
+        }
 
         event(new Registered($user));
 

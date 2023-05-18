@@ -2,11 +2,12 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Referral extends Model {
-    use HasFactory;
+    use HasFactory, HasUuids;
 
     const FIRST_LEVEL = 'FIRST_LEVEL';
     const SECOND_LEVEL = 'SECOND_LEVEL';

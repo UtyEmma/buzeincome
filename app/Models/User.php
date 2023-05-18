@@ -76,7 +76,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     function referrer(){
-        return $this->hasOne(User::class, 'referrer_id');
+        return $this->belongsTo(User::class, 'referrer_id');
     }
 
     function wallet(){
