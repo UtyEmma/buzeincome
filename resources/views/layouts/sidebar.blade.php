@@ -106,12 +106,14 @@
                         <h6 class="overline-title text-primary-alt">Account</h6>
                     </li>
 
-                    <li class="nk-menu-item">
-                        <a href="{{route('profile.wallet')}}" class="nk-menu-link" data-original-title="" title="">
-                            <span class="nk-menu-icon"><em class="icon ni ni-wallet"></em></span>
-                            <span class="nk-menu-text">Wallet</span>
-                        </a>
-                    </li>
+                    @if (auth()->user()->isUser())
+                        <li class="nk-menu-item">
+                            <a href="{{route('profile.wallet')}}" class="nk-menu-link" data-original-title="" title="">
+                                <span class="nk-menu-icon"><em class="icon ni ni-wallet"></em></span>
+                                <span class="nk-menu-text">Wallet</span>
+                            </a>
+                        </li>
+                    @endif
 
                     <li class="nk-menu-item">
                         <a href="{{route('profile.edit')}}" class="nk-menu-link" data-original-title="" title="">
