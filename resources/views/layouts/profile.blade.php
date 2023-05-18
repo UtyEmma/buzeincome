@@ -174,4 +174,6 @@
             </div><!-- .modal-dialog -->
         </div><!-- .modal -->
     @endpush
+
+  
 </x-dashboard-layout>

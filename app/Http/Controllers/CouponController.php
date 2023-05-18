@@ -1,15 +1,46 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Coupon;
 
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CouponController extends Controller
 {
 
-    public function index()
+    function __construct(Coupon $coupon)
     {
-        //
+       $this->coupon = $coupon;
+    }
+
+    public function verifyCoupon()
+    {
+        return view('coupon.verify-coupon');
+    }
+
+    public function checkValidity(Request $request)
+    {
+        $this->validate($request, [
+            'couponNumber' => 'required',
+        ]);
+
+        $couponNumberValidity = $request->input('couponNumber');
+
+        $checkValidity = Coupon::where([
+            ['code', '=', $couponNumberValidity]
+            ])->first();
+
+            if($checkValidity){
+
+                Alert::success('Coupon Code is Valid');
+                return back();
+
+            }else{
+                Alert::error('Coupon Code is Invalid');
+                return back();
+            }
+
     }
 
     function list(Request $request){
@@ -44,5 +75,10 @@ class CouponController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function contact_us()
+    {
+        return view('contact');
     }
 }

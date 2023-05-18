@@ -1,5 +1,5 @@
 <x-profile-layout :user="$user" :title="'Wallet'" :subtitle="'Manage your account earnings and withdrawals'">
-
+@include('sweetalert::alert')
 
     <div class="mb-3">
         <div class="row mb-3 g-2">
@@ -73,4 +73,6 @@
             {{$withdrawals->links()}}
         </div>
     </div>
+
+    
 </x-profile-layout>

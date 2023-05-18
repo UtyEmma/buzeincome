@@ -8,8 +8,8 @@
     <div class="row">
       <div class="col-lg-12">
         <div class="section-title text-center">
-          <h5 class="mb-3">30 years of SEO expertise</h5>
-          <h2 class="title">Trusted Vendors</h2>
+          <!-- <h5 class="mb-3">30 years of SEO expertise</h5> -->
+          <h2 class="title">Our Trusted Vendors</h2>
           <div class="desc">
             <!-- <p>From trust to dedication and integrity, we have selected vendors you can trust.</p> -->
           </div>
@@ -33,18 +33,19 @@
       <div class="col-sm-6 col-lg-4">
         <div class="team-member">
           <div class="thumb">
-            <img src="assets/img/team/01.jpg" alt="Boseo-HasTech">
+            <img src="{{ $vendor->image }}" alt="Boseo-HasTech">
           </div>
           <div class="content">
             <div class="member-info">
-              <h4 class="name"><a href="#/">{{$vendor->firstname}} {{$vendor->lastname}}</a></h4>
-              <p class="designation">Lead Analyst</p>
+              <h4 class="name"><a href="https://wa.me/{{$vendor->phone}}">{{$vendor->firstname}} {{$vendor->lastname}}</a></h4>
+              <!-- <h4 class="name"><a href="#/"> {{$vendor->phone}}</a></h4> -->
+              <p class="designation">Lead Vendor</p>
             </div>
           </div>
-          <a class="icon team-btn-active" href="#/">
+          <!-- <a class="icon team-btn-active" href="#/">
             <img src="assets/img/icons/eye.png" alt="Icon-Image">
-          </a>
-          <div class="hover-content">
+          </a> -->
+          <!-- <div class="hover-content">
             <div class="member-info">
               <a class="icon team-btn-close" href="#/">
                 <i class="lnr lnr-cross"></i>
@@ -60,7 +61,7 @@
                 <a href="#"><i class="social social_skype"></i></a>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
       @empty

@@ -7,22 +7,22 @@
           <div class="col-lg-1 col-xl-1">
             <div class="about-widget">
               <a class="footer-logo" href="index.html">
-                <img src="assets/img/logo.png" alt="Logo">
+                <img src="assets/img/brizzlentLogo.png" alt="Logo">
               </a>
             </div>
           </div>
           <div class="col-lg-3 col-xl-2">
             <div class="widget-copyright copyright-style-two">
-              <p>© 2022. All Rights Reserved</p>
+              <p>© 2023. All Rights Reserved</p>
             </div>
           </div>
           <div class="col-lg-5 col-xl-6 justify-content-center">
             <nav class="widget-menu-wrap">
               <ul class="nav-menu nav-menu-two nav">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="about.html">About Me</a></li>
-                <li><a href="contact-us.html">Contact</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="find-vendors">Vendors</a></li>
+                <li><a href="verify-coupon">Verify Coupon</a></li>
+                <li><a href="contact-us">Contact</a></li>
               </ul>
             </nav>
           </div>
@@ -52,7 +52,7 @@
         <!-- Off Canvas Header -->
         <div class="off-canvas-header">
           <div class="logo-area">
-            <a href="index.html"><img src="assets/img/logo.png" alt="Logo" /></a>
+            <a href="index.html"><img src="{{ asset('assets/img/logo.png') }}" alt="Logo" /></a>
           </div>
           <ul class="widget-language">
             <li><a class="active" href="#/">Eng</a></li>
@@ -100,33 +100,33 @@
 <!--=======================Javascript============================-->
 
 <!--=== Modernizr Min Js ===-->
-<script src="assets/js/modernizr.js"></script>
+<script src="{{ asset('assets/js/modernizr.js') }}"></script>
 <!--=== jQuery Min Js ===-->
-<script src="assets/js/jquery-main.js"></script>
+<script src="{{ asset('assets/js/jquery-main.js') }}"></script>
 <!--=== jQuery Migration Min Js ===-->
-<script src="assets/js/jquery-migrate.js"></script>
+<script src="{{ asset('assets/js/jquery-migrate.js') }}"></script>
 <!--=== Popper Min Js ===-->
-<script src="assets/js/popper.min.js"></script>
+<script src="{{ asset('assets/js/popper.min.js') }}"></script>
 <!--=== Bootstrap Min Js ===-->
-<script src="assets/js/bootstrap.min.js"></script>
+<script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
 <!--=== Leaflet Js ===-->
-<script src="assets/js/leaflet.js"></script>
+<script src="{{ asset('assets/js/leaflet.js') }}"></script>
 <!--=== Owl Carousel Js ===-->
-<script src="assets/js/owl-carousel.js"></script>
+<script src="{{ asset('assets/js/owl-carousel.js') }}"></script>
 <!--=== Jquery Typed Js ===-->
-<script src="assets/js/jquery-slick.js"></script>
+<script src="{{ asset('assets/js/jquery-slick.js') }}"></script>
 <!--=== Fancybox Js ===-->
-<script src="assets/js/fancybox.js"></script>
+<script src="{{ asset('assets/js/fancybox.js') }}"></script>
 <!--=== Jquery wow Js ===-->
-<script src="assets/js/jquery-wow.js"></script>
+<script src="{{ asset('assets/js/jquery-wow.js') }}"></script>
 <!--=== SlickNav Js ===-->
-<script src="assets/js/slicknav.js"></script>
+<script src="{{ asset('assets/js/slicknav.js') }}"></script>
 <!--=== Isotope Min Js ===-->
-<script src="assets/js/isotope.pkgd.min.js"></script>
+<script src="{{ asset('assets/js/isotope.pkgd.min.js') }}"></script>
 
 
 <!--=== Custom Js ===-->
-<script src="assets/js/custom.js"></script>
+<script src="{{ asset('assets/js/custom.js') }}"></script>
 
 </body>
 

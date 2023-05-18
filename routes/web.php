@@ -138,4 +138,5 @@ require __DIR__.'/auth.php';
 
 Route::get('/find-vendors', [VendorController::class, 'index'])->name('vendors');
 Route::get('/verify-coupon', [CouponController::class, 'verifyCoupon'])->name('verifyCoupon');
+Route::get('/checkValidity', [CouponController::class, 'checkValidity'])->name('checkValidity');
 Route::get('/contact-us', [CouponController::class, 'contact_us'])->name('contact-us');

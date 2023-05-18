@@ -1,9 +1,9 @@
 <?php
 
 return [
-    'sitename' => 'buzeIncome',
-    'site_email1' => 'info@buzeincome.com',
-    'site_email2' => 'support@buzeincome.com',
+    'sitename' => 'Brizzlent',
+    'site_email1' => 'info@brizzlent.com',
+    'site_email2' => 'support@brizzlent.com',
     'site_phone1' => '+234 22222222222',
     'site_phone2' => '+234 33333333333',
     'address1' => 'Bellagio Mall, Jl.
