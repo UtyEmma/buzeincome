@@ -52,7 +52,7 @@
 
                 <div class="form-group">
                     <label class="form-label" for="referral_code">Referral Code (Optional) </label>
-                    <input type="text" class="form-control form-control-lg" id="referral_code" name="referral_code" placeholder="Enter your Referral Code">
+                    <input type="text" class="form-control form-control-lg" value="{{request()->input('ref')}}" id="referral_code" name="referral_code" placeholder="Enter your Referral Code">
                     <x-input-error key="referral_code" />
                 </div>
 

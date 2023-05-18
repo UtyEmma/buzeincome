@@ -13,7 +13,7 @@ class ReferralService {
 
 
     function handleReferralPayout(User $user) : void {
-        if(!$user->has('referrer')) return;
+        if(!$user->referrer) return;
 
         $settings = AppSettings::first();
         $comission = $settings->refferal_comission;
@@ -25,7 +25,7 @@ class ReferralService {
         
         $this->sendFirstLevelReferralNotification($firstLevelReferrer, $comission);
         
-        if($firstLevelReferrer->has('referrer')){
+        if($firstLevelReferrer->referrer){
             $secondLevelReferrer = $firstLevelReferrer->referrer; 
             $second_level_comission = $settings->second_level_refferal_comission;
             
