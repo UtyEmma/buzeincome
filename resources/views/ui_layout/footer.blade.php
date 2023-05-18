@@ -7,22 +7,22 @@
           <div class="col-lg-1 col-xl-1">
             <div class="about-widget">
               <a class="footer-logo" href="index.html">
-                <img src="assets/img/logo.png" alt="Logo">
+                <img src="assets/img/brizzlentLogo.png" alt="Logo">
               </a>
             </div>
           </div>
           <div class="col-lg-3 col-xl-2">
             <div class="widget-copyright copyright-style-two">
-              <p>© 2022. All Rights Reserved</p>
+              <p>© 2023. All Rights Reserved</p>
             </div>
           </div>
           <div class="col-lg-5 col-xl-6 justify-content-center">
             <nav class="widget-menu-wrap">
               <ul class="nav-menu nav-menu-two nav">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="about.html">About Me</a></li>
-                <li><a href="contact-us.html">Contact</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="find-vendors">Vendors</a></li>
+                <li><a href="verify-coupon">Verify Coupon</a></li>
+                <li><a href="contact-us">Contact</a></li>
               </ul>
             </nav>
           </div>

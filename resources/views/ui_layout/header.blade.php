@@ -70,9 +70,9 @@
         <div class="col-12 col-xl-12 col-grid">
           <div class="header-right">
             <div class="header-logo-area">
-              <a href="index.html">
-                <img class="logo-main" src="{{ asset('assets/img/logo.png') }}" alt="Logo" />
-                <img class="logo-light" src="{{ asset('assets/img/logo.png') }}" alt="Logo" />
+              <a href="/">
+                <img class="logo-main" src="{{ asset('assets/img/brizzlentLogo.png') }}" alt="Logo" />
+                <img class="logo-light" src="{{ asset('assets/img/brizzlentLogo.png') }}" alt="Logo" />
               </a>
             </div>
             <div class="header-navigation-area">

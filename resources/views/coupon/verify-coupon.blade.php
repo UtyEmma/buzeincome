@@ -8,9 +8,9 @@
           <div class="row">
             <div class="col-lg-12">
               <div class="slider-content-inner">
-                <form class="input-btn-group ">
-                    <input class="form-control no-border" type="text" placeholder="Coupon Code">
-                    <button class="btn btn-theme" type="button">Verify</button>
+                <form class="input-btn-group method="GET" action="{{ route('checkValidity')}}">
+                    <input class="form-control no-border" type="text" placeholder="Coupon Code" name="couponNumber">
+                    <button class="btn btn-theme" type="submit">Verify</button>
                 </form>
                 <h3>Verify Your Coupon Code Here</h3>
                 <p>If you have purchased a coupon code, type it in  <br>Here to be sure of the its Validity</p>
@@ -38,5 +38,7 @@
       </div> -->
     </section>
 </main>
+
+@include('sweetalert::alert')
 
     @endsection

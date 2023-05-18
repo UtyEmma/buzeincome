@@ -13,9 +13,9 @@ class Wallet extends Model
     protected $fillable = ['user_id', 'escrow_bal', 'main_bal'];
 
     protected static function booted(){
-        static::updated(function(Wallet $wallet){
-            $wallet->total_bal = $wallet->main_bal + $wallet->ref_bal;
-        });
+        // static::updated(function(Wallet $wallet){
+        //     $wallet->total_bal = $wallet->main_bal + $wallet->ref_bal;
+        // });
     }
 
     

@@ -25,7 +25,7 @@
                     <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                     <div class="dropdown-menu dropdown-menu-right">
                         <ul class="link-list-opt no-bdr">
-                            <li><a href="#"><em class="icon ni ni-money"></em><span>Assign Coupons</span></a></li>
+                            <li><a href="#" data-toggle="modal" data-target="#vendor-{{$vendor->id}}"><em class="icon ni ni-money"></em><span>Assign Coupons</span></a></li>
                             <li><a href="#"><em class="icon ni ni-pen"></em><span>Edit Vendor</span></a></li>
                             <li><a href="{{route('vendors.destroy', ['user' => $vendor->id])}}" ><em class="icon ni ni-trash"></em><span>Delete Vendor</span></a></li>
                         </ul>
@@ -34,4 +34,6 @@
             </li>
         </ul>
     </div>
+
+    <x-vendors.assign-coupons :user="$vendor" id="vendor-{{$vendor->id}}" />
 </div>

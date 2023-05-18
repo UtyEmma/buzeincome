@@ -33,15 +33,15 @@ class TaskCompletionController extends Controller
         ]);
     }
 
-    function verify(Request $request, Task $task, TaskCompletion $taskCompletion) {
-        $user = $request->user();
-        
+    function verify(Request $request, Task $task, TaskCompletion $taskCompletion) {        
         $taskCompletion->verified_at = now();
         $taskCompletion->save();
 
-        $wallet = $user->wallet;
+        $wallet = $taskCompletion->user->wallet;
+        
         $wallet->main_bal += $task->reward;
         $wallet->save();
+
 
         Alert::success('Task Completion has been verified Successfully!');
 

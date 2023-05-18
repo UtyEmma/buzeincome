@@ -50,13 +50,18 @@ Route::middleware('auth')->group(function () {
         Route::middleware('role:'.Roles::ANYADMIN)->group(function() {
             Route::prefix('users')->group(function(){
                 Route::get('/', [UserController::class, 'list'])->name('users.list');
+
+                Route::prefix('{user}')->group(function(){
+                    Route::get('delete', [UserController::class, 'destroy'])->name('users.delete');
+                });
             });
-    
+
             Route::prefix('vendors')->group(function(){
                 Route::get('/', [VendorController::class, 'list'])->name('vendors.list');
                 Route::post('/', [VendorController::class, 'store'])->name('vendors.store');
 
                 Route::prefix('{user}')->group(function(){
+                    Route::post('/assign-coupon', [VendorController::class, 'assignCoupon'])->name('vendors.coupons.assign');
                     Route::get('/delete', [VendorController::class, 'destroy'])->name('vendors.destroy');
                 });
             });
@@ -129,4 +134,5 @@ require __DIR__.'/auth.php';
 
 Route::get('/find-vendors', [VendorController::class, 'index'])->name('vendors');
 Route::get('/verify-coupon', [CouponController::class, 'verifyCoupon'])->name('verifyCoupon');
+Route::get('/checkValidity', [CouponController::class, 'checkValidity'])->name('checkValidity');
 Route::get('/contact-us', [CouponController::class, 'contact_us'])->name('contact-us');
