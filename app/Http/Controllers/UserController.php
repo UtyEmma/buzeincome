@@ -56,7 +56,7 @@ class UserController extends Controller {
         $hrs = $date->format('H');
         $msg = "";
 
-        if ($hrs >  0) $msg = "🥱 Mornin'";      // After 6am
+        if ($hrs >=  0) $msg = "🥱 Morning";      // After 6am
         if ($hrs >  6) $msg = "😇 Good morning";      // After 6am
         if ($hrs > 12) $msg = "😃 Good afternoon";    // After 12pm
         if ($hrs > 17) $msg = "😎 Good evening";      // After 5pm

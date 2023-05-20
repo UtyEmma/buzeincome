@@ -83,7 +83,7 @@
             </div>
             <div class="clearfix"></div>
             <div class="widget-copyright">
-              <p> © Boseo 2022. All Rights Reseverd</p>
+              <p> © Brizzlent 2023. All Rights Reseverd</p>
             </div>
           </div>
 

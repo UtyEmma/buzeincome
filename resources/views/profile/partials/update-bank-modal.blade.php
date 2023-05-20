@@ -33,7 +33,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="account_name" class="form-label">Account Number</label>
+                                <label for="account_name" class="form-label">Account Name</label>
                                 <input type="text" class="form-control form-control-lg appearance-none w-100" name="account_name" id="account_name" placeholder="Account Name">
                                 <x-input-error key="account_name" />
                             </div>

@@ -80,7 +80,7 @@
                 <div class="modal-content">
                     <a href="#" class="close" data-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
                     <div class="modal-body modal-body-lg">
-                        <form action="{{route('profile.update')}}" method="POST" >
+                        <form action="{{route('profile.update')}}" method="POST" enctype="multipart/form-data">
                             @csrf()
 
                             <h5 class="title mb-3">Update Profile</h5>

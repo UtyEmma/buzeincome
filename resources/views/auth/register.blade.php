@@ -5,7 +5,7 @@
                 <div class="nk-block-head-content">
                     <h4 class="nk-block-title">Register</h4>
                     <div class="nk-block-des">
-                        <p>Create New Dashlite Account</p>
+                        <p>Create New Brizzlent Account</p>
                     </div>
                 </div>
             </div>
