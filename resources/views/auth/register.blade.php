@@ -59,7 +59,7 @@
                 <div class="form-group">
                     <div class="custom-control custom-control-xs custom-checkbox">
                         <input type="checkbox" class="custom-control-input" name="terms" id="checkbox">
-                        <label class="custom-control-label" for="checkbox">I agree to Dashlite <a href="#">Privacy Policy</a> &amp; <a href="#"> Terms.</a></label>
+                        <label class="custom-control-label" for="checkbox">I agree to Brizzlent <a href="{{route('privacy-policy')}}">Privacy Policy</a> &amp; <a href="#"> Terms.</a></label>
                     </div>
                     <x-input-error key="terms" />
                 </div>
@@ -78,4 +78,7 @@
             </ul>
         </div>
     </div>
+
+
+    
 </x-auth-layout>

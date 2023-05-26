@@ -7,7 +7,7 @@
 
     <div class="row g-3">
         @forelse ($coupons as $coupon)
-            <div x-data="{show: false}" class="col-md-3 col-2">
+            <div x-data="{show: false}" class="col-md-3 col-6">
                 <div class="card">
                     <div  class="card-body text-center">
                         <div  class="bg-lighter rounded p-1">

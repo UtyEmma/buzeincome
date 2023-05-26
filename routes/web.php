@@ -140,3 +140,5 @@ Route::get('/find-vendors', [VendorController::class, 'index'])->name('vendors')
 Route::get('/verify-coupon', [CouponController::class, 'verifyCoupon'])->name('verifyCoupon');
 Route::get('/checkValidity', [CouponController::class, 'checkValidity'])->name('checkValidity');
 Route::get('/contact-us', [CouponController::class, 'contact_us'])->name('contact-us');
+Route::get('/how-it-works', [CouponController::class, 'howItWorks'])->name('how-it-woks');
+Route::get('/privacy-policy', [CouponController::class, 'privacy'])->name('privacy-policy');

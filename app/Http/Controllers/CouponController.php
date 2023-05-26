@@ -43,6 +43,17 @@ class CouponController extends Controller
 
     }
 
+    public function howItWorks(){
+        return view('/how-it-works');
+    }
+
+    function privacy(){
+      
+       return view('/privacy-policy');
+    }
+
+
+
     function list(Request $request){
         
     }

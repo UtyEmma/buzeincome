@@ -17,6 +17,7 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,600,700,800" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,700" rel="stylesheet">
 
+
     <!--== Bootstrap Min CSS ==-->
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet"/>
     <!--== Font Awesome Min CSS ==-->
@@ -40,12 +41,20 @@
     <!--== Fancybox CSS ==-->
     <link href="{{ asset('assets/css/fancybox.css') }}" rel="stylesheet"/>
 
+    
+   
+
     <!--== Main Style CSS ==-->
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet" />
+    
 
+    
 </head>
 
 <body>
+
+<!--wrapper start-->
+<div class="wrapper">
 
 <!--wrapper start-->
 <div class="wrapper home-digital-marketer-wrapper">
@@ -64,56 +73,83 @@
   <!--== End Preloader Content ==-->
 
   <!--== Start Header Wrapper ==-->
-  <header class="header-area transparent header-transparent header-right-align sticky-header">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-12 col-xl-12 col-grid">
-          <div class="header-right">
-            <div class="header-logo-area">
-              <a href="/">
-                <img class="logo-main" src="{{ asset('assets/img/brizzlentLogo.png') }}" alt="Logo" />
-                <img class="logo-light" src="{{ asset('assets/img/brizzlentLogo.png') }}" alt="Logo" />
-              </a>
+  <header class="header-area header-right-align header-style sticky-header">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-7 col-sm-7 col-lg-2">
+              <div class="header-logo-area">
+                <a href="/">
+                  <img
+                    class="logo-main"
+                    src="{{ asset('assets/img/brizzlentLogo.png') }}"
+                    alt="Logo"
+                  />
+                  <img
+                    class="logo-light"
+                    src="{{ asset('assets/img/brizzlentLogo.png') }}"
+                    alt="Logo"
+                  />
+                </a>
+              </div>
             </div>
-            <div class="header-navigation-area">
-              <ul class="main-menu nav justify-content-center">
-                <li class="has-submenu active"><a href="/">Home</a>
-                  <ul class="submenu-nav">
-                    <li><a href="/">How It Works</a></li>
+            <div class="col-5 col-sm-5 col-lg-10">
+              <div class="header-right">
+                <div class="header-navigation-area">
+                  <ul class="main-menu nav justify-content-center">
+                    <li class="has-submenu active"><a href="/">Home</a>
+                      <ul class="submenu-nav">
+                        <li><a href="/how-it-works">How It Works</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="{{route('vendors')}}">Coupon Vendors</a>
+                    </li>
+                    <li><a href="{{route('verifyCoupon')}}">Verify Coupon</a></li>
+                    <li><a href="contact-us">Contact</a></li>
+    
+                    @if (Auth()->check())
+                    <li><a href="dashboard">Dashboard</a></li>
+                    @else
+                    <li><a href="login">Login</a></li>
+                    <li><a href="register">Register</a></li>
+                    @endif
+    
                   </ul>
-                </li>
-                <li><a href="{{route('vendors')}}">Coupon Vendors</a>
-                </li>
-                <li><a href="{{route('verifyCoupon')}}">Verify Coupon</a></li>
-                <li><a href="contact-us">Contact</a></li>
+                </div>
+                <div class="header-action-area">
+                  <!-- <button class="btn-search">
+                    <span class="icon-search lnr lnr-magnifier"></span>
+                    <span class="icon-search-close lnr lnr-cross"></span>
+                  </button>
+                  <div class="btn-search-content">
+                    <form action="#" method="post">
+                      <div class="form-input-item">
+                        <label for="search" class="sr-only">Search...</label>
+                        <input
+                          type="text"
+                          id="search"
+                          placeholder="Search..."
+                        />
+                        <button type="submit" class="btn-src">
+                          <i class="lnr lnr-magnifier"></i>
+                        </button>
+                      </div>
+                    </form>
+                  </div> -->
 
-                @if (Auth()->check())
-                <li><a href="dashboard">Dashboard</a></li>
-                @else
-                <li><a href="login">Login</a></li>
-                <li><a href="register">Register</a></li>
-                @endif
-
-              </ul>
-            </div>
-            <div class="header-action-area">
-              <!-- <div class="header-contact-info">
-                <span>{{config('global.site_phone1')}}</span>
-                <span>{{config('global.site_email1')}}</span>
-              </div> -->
-              
-              <!-- <a class="btn-theme" href="#/">Dashboard</a>
-              <a class="btn-theme" href="#/">Register</a>
-              <a class="btn-theme" href="#/">Login</a> -->
-              <button class="btn-menu d-lg-none">
-                <span></span>
-                <span></span>
-                <span></span>
-              </button>
+                  @if (Auth()->check())
+                  <a class="btn-theme" href="/wallet">View Earnings</a>
+                  @else
+                  <a class="btn-theme" href="/login">Start Earning</a>
+                  @endif
+                  <button class="btn-menu d-lg-none">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </header>
+      </header>
   <!--== End Header Wrapper ==-->
